@@ -196,7 +196,7 @@ local highlights = {
     ["@rust_path"] = { fg = base16.base0B },
     ["CodeActionAvailable"] = { fg = base16.base08 },
 
-    Comment = { fg = grey_fg, italic = true },
+    Comment = { fg = colors.grey_fg , italic = true },
     TS_Context = { bg = colors.grey_fg },
     Yellow = { fg = colors.yellow },
     Red = { fg = colors.red },
@@ -268,10 +268,10 @@ local highlights = {
     NvimTreeIndentMarker = { fg = colors.one_bg2 },
     NvimTreeNormal = { bg = colors.darker_black },
     NvimTreeOpenedFolderName = { fg = colors.blue },
-    NvimTreeRootFolder = { fg = red, underline = true },
-    NvimTreeStatuslineNc = { fg = darker_black, bg = colors.darker_black },
-    NvimTreeVertSplit = { fg = darker_black, bg = colors.darker_black },
-    NvimTreeWindowPicker = { fg = red, bg = colors.tele_prompt },
+    NvimTreeRootFolder = { fg = colors.red  underline = true },
+    NvimTreeStatuslineNc = { fg = colors.darker_black , bg = colors.darker_black },
+    NvimTreeVertSplit = { fg = colors.darker_black , bg = colors.darker_black },
+    NvimTreeWindowPicker = { fg = colors.red  bg = colors.tele_prompt },
 
     Search = { bg = colors.yellow },
     IncSearch = { bg = colors.red },
@@ -289,7 +289,7 @@ local highlights = {
     LightspeedUnlabeledMatch = { fg = "#FF6000" },
 
     Definition = { fg = colors.white, bg = colors.darker_black },
-    FloatBorder = { fg = light_grey, bg = colors.black },
+    FloatBorder = { fg = colors.light_grey , bg = colors.black },
 
     PmenuSel = { fg = colors.blue, bg = colors.light_grey },
 
