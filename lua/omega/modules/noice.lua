@@ -5,7 +5,7 @@ local noice = {
 }
 
 function noice.config()
-    local config=require"omega.config"
+    local config = require("omega.config")
     vim.o.lazyredraw = false
     local settings = {
         cmdline = {
@@ -85,7 +85,7 @@ function noice.config()
                 },
             },
         }
-        if config.ui.cmdline.position=="top" then
+        if config.ui.cmdline.position == "top" then
             settings.views.cmdline_popup.position.row = 2
             settings.views.popupmenu.position.row = 5
         end
