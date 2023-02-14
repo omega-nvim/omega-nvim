@@ -64,3 +64,17 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
     group = vim.api.nvim_create_augroup("highlight_yank", {}),
     desc = "Highlight yanked text",
 })
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+    pattern = { "help", "startuptime", "qf", "lspinfo", "man", "tsplayground" },
+    callback = function()
+        vim.keymap.set("n", "q", function()
+            vim.cmd.close()
+        end, {
+            noremap = true,
+            silent = true,
+            buffer = true,
+        })
+    end,
+    desc = "Map q to close some buffers",
+})
