@@ -9,3 +9,10 @@ vim.api.nvim_create_autocmd("BufWritePre", {
         end
     end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "lua", "vim", "help", "c" },
+    callback = function()
+        vim.treesitter.start()
+    end,
+})
