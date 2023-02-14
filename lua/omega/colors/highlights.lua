@@ -1,6 +1,9 @@
 local theme = require("omega.colors.themes." .. vim.g.colors_name)
 local colors = theme.colors
 local base16 = theme.base16
+local config = require("omega.config")
+colors.tele_bg=colors.telescope_bg or colors.darker_black
+colors.tele_prompt = colors.telescope_prompt or colors.black2
 
 local highlights = {
     ["Normal"] = { fg = base16.base05, bg = base16.base00 },
@@ -371,6 +374,42 @@ for kind_name, hl in pairs(kind_highlights) do
     }
     highlights[("CmpItemKindMenu%s"):format(kind_name)] = { fg = hl }
     highlights[("CmpItemKindBlock%s"):format(kind_name)] = { fg = color_utils.blend_colors(hl, base16.base00, 0.15) }
+end
+
+highlights.TelescopeSelectionCaret = { fg = colors.blue, bg = colors.light_grey }
+highlights.TelescopeSelection = { fg = colors.blue, bg = colors.light_grey }
+
+highlights.TelescopePreviewLine = { bg = colors.light_grey }
+
+highlights.TelescopePromptPrefix = { fg = colors.red }
+
+if config.ui.telescope.titles == "blocks" then
+    highlights.TelescopeResultsTitle = { fg = colors.black, bg = colors.blue }
+    highlights.TelescopePromptTitle = { fg = colors.black, bg = colors.red }
+    highlights.TelescopePreviewTitle = { fg = colors.black, bg = colors.green }
+elseif config.ui.telescope.titles == "no_bg" then
+end
+
+if config.ui.telescope.borders then
+    highlights.TelescopeBorder = { fg = colors.light_grey, bg = colors.black }
+    highlights.TelescopePromptBorder = { fg = colors.light_grey, bg = colors.black }
+    highlights.TelescopePreviewBorder = { fg = colors.light_grey, bg = colors.black }
+    highlights.TelescopeResultsBorder = { fg = colors.light_grey, bg = colors.black }
+
+    highlights.TelescopePromptNormal = { fg = colors.white }
+    highlights.TelescopePreviewNormal = { bg = colors.black }
+
+    highlights.TelescopeNormal = { bg = colors.black }
+else
+    highlights.TelescopeBorder = { fg = colors.tele_bg, bg = colors.tele_bg }
+    highlights.TelescopePreviewBorder = { fg = colors.tele_bg, bg = colors.tele_bg }
+    highlights.TelescopeResultsBorder = { fg = colors.tele_bg, bg = colors.tele_bg }
+    highlights.TelescopePromptBorder = { fg = colors.tele_prompt, bg = colors.tele_prompt }
+
+    highlights.TelescopePromptNormal = { fg = colors.white, bg = colors.tele_prompt }
+    highlights.TelescopePreviewNormal = { bg = colors.tele_bg }
+
+    highlights.TelescopeNormal = { bg = colors.tele_bg }
 end
 
 return highlights

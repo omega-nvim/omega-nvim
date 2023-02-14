@@ -8,9 +8,9 @@ function colors.compile_theme(theme)
     local lines = {
         string.format(
             [[
-		require"omega.colors".compiled=string.dump(function()
-			vim.g.colors_name="%s"
-			]],
+        require"omega.colors".compiled=string.dump(function()
+            vim.g.colors_name="%s"
+            ]],
             vim.g.colors_name
         ),
     }
@@ -60,6 +60,9 @@ function colors.new_theme(theme)
     vim.g.colors_name = theme
     package.loaded["omega.colors.highlights"] = nil
     package.loaded["omega.colors.custom"] = nil
+    package.loaded["omega.config"] = nil
+    package.loaded["bufferline"] = nil
+    package.loaded["heirline"] = nil
     require("omega.colors").compile_theme(theme)
     local highlights_raw = vim.split(vim.api.nvim_exec("filter BufferLine hi", true), "\n")
     local highlight_groups = {}
@@ -69,9 +72,6 @@ function colors.new_theme(theme)
     for _, highlight in ipairs(highlight_groups) do
         vim.cmd([[hi clear ]] .. highlight)
     end
-    package.loaded["omega"] = nil
-    package.loaded["bufferline"] = nil
-    package.loaded["heirline"] = nil
     -- require("omega.modules.bufferline").config()
     -- require("omega.modules.heirline").config()
     loadfile(vim.fn.stdpath("cache") .. "/omega/highlights")()
