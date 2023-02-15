@@ -75,7 +75,7 @@ function colors.new_theme(theme)
     -- require("omega.modules.bufferline").config()
     -- require("omega.modules.heirline").config()
     loadfile(vim.fn.stdpath("cache") .. "/omega/highlights")()
-    vim.api.nvim_exec_autocommands("User", {
+    vim.api.nvim_exec_autocmds("User", {
         pattern = "OmegaNewTheme",
     })
     -- TODO: eventually remove
