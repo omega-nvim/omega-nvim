@@ -50,9 +50,7 @@ local function run_file()
         end
     end
     if command ~= nil then
-        require("toggleterm.terminal").Terminal
-            :new({ cmd = command, close_on_exit = false })
-            :toggle()
+        require("toggleterm.terminal").Terminal:new({ cmd = command, close_on_exit = false }):toggle()
         print("Running: " .. command)
     end
 end

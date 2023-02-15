@@ -2,7 +2,7 @@ local theme = require("omega.colors.themes." .. vim.g.colors_name)
 local colors = theme.colors
 local base16 = theme.base16
 local config = require("omega.config")
-colors.tele_bg=colors.telescope_bg or colors.darker_black
+colors.tele_bg = colors.telescope_bg or colors.darker_black
 colors.tele_prompt = colors.telescope_prompt or colors.black2
 
 local highlights = {

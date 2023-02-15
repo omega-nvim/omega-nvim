@@ -1,6 +1,6 @@
 local formatter = {
     "mhartington/formatter.nvim",
-    cmd = {"Format"},
+    cmd = { "Format" },
 }
 
 formatter.config = function()

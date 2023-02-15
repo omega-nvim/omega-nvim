@@ -28,7 +28,6 @@ require("lazy").setup("omega.modules", {
         cmd = "git",
     },
     performance = {
-	    reset=true,
         rtp = {
             paths = {
                 vim.fn.expand("~") .. "/.config/nvim",
