@@ -4,6 +4,10 @@ map("n", "<leader>ff", function()
     require("telescope.builtin").find_files()
 end, { desc = " Find file" })
 
+map("n", "<leader>hh", function()
+    require("telescope.builtin").help_tags()
+end, { desc = " Help tags" })
+
 map("n", "<leader>/", function()
     require("telescope.builtin").live_grep()
 end, { desc = " Live Grep" })
