@@ -4,6 +4,7 @@ vim.g.mapleader = " "
 
 opt.undofile = true
 opt.undodir = vim.fn.expand("~") .. "/.vim/undodir"
+opt.scrolloff = 3 -- start scrolling 3 lines away from top/bottom
 require("omega.core.settings.ui")
 vim.defer_fn(function()
     opt.timeoutlen = 300
@@ -26,7 +27,6 @@ vim.defer_fn(function()
     opt.jumpoptions:append("view")
     opt.virtualedit = "block" -- allow visual mode to go over end of lines
     opt.expandtab = true -- expand tabs to spaces
-    opt.scrolloff = 3 -- start scrolling 3 lines away from top/bottom
     opt.compatible = false
     opt.wrap = true -- wrap long lines
     opt.linebreak = true
