@@ -3,10 +3,6 @@ return {
     { "rcarriga/nvim-notify" },
     { "MunifTanjim/nui.nvim" },
     { "nvim-lua/plenary.nvim" },
-    -- TODO: add to custom thing
-    {
-        dir = "~/neovim_plugins/colorscheme_switcher/",
-    },
     {
         "xiyaowong/nvim-colorizer.lua",
         cmd = { "ColorizerAttachToBuffer" },
@@ -20,4 +16,5 @@ return {
             vim.cmd.ColorizerAttachToBuffer()
         end,
     },
+    { import = "omega.custom" },
 }
