@@ -7,4 +7,17 @@ return {
     {
         dir = "~/neovim_plugins/colorscheme_switcher/",
     },
+    {
+        "xiyaowong/nvim-colorizer.lua",
+        cmd = { "ColorizerAttachToBuffer" },
+        config = function()
+            require("colorizer").setup({
+                "*",
+            }, {
+                mode = "foreground",
+                hsl_fn = true,
+            })
+            vim.cmd.ColorizerAttachToBuffer()
+        end,
+    },
 }
