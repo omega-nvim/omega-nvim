@@ -32,4 +32,29 @@ function utils.last_place()
     end
 end
 
+function utils.get_themes()
+    local theme_paths = vim.api.nvim_get_runtime_file("lua/omega/colors/themes/*", true)
+    local themes = {}
+    for _, path in ipairs(theme_paths) do
+        local theme = path:gsub(".*/lua/omega/colors/themes/", ""):gsub(".lua", "")
+        table.insert(themes, theme)
+    end
+    return themes
+end
+
+--- Retunrs a border
+---@return table<string, string> border char, highlight
+function utils.border()
+    return {
+        { "╭", "FloatBorder" },
+        { "─", "FloatBorder" },
+        { "╮", "FloatBorder" },
+        { "│", "FloatBorder" },
+        { "╯", "FloatBorder" },
+        { "─", "FloatBorder" },
+        { "╰", "FloatBorder" },
+        { "│", "FloatBorder" },
+    }
+end
+
 return utils
