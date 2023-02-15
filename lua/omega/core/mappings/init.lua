@@ -59,3 +59,11 @@ map("n", "<leader>ii", "i <esc>l", { desc = " Insert space before", noremap =
 map("n", "<leader>ia", "i <esc>l", { desc = " Insert space after", noremap = true })
 
 map("i", " ", "<right>", { noremap = true, desc = "Move right" })
+
+map("n", ",,", function()
+    require("omega.utils").append_comma()
+end, { desc = "Append comma" })
+
+map("n", ";;", function()
+    require("omega.utils").append_semicolon()
+end, { desc = "Append semicolon" })
