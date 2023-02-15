@@ -15,10 +15,6 @@ require("lazy").setup("omega.modules", {
     defaults = {
         lazy = true,
     },
-    dev = {
-        path = "~/neovim_plugins/",
-        patterns = { "max397574" },
-    },
     ui = {
         icons = {
             lazy = "鈴",
