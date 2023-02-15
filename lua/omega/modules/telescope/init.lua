@@ -72,17 +72,29 @@ function telescope.config()
     local pickers = require("telescope.pickers")
     local previewers = require("telescope.previewers")
     local action_state = require("telescope.actions.state")
-local finders = require("telescope.finders")
-local make_entry = require("telescope.make_entry")
-local pickers = require("telescope.pickers")
-local conf = require("telescope.config").values
-local sorters = require("telescope.sorters")
-local actions = require("telescope.actions")
+    local finders = require("telescope.finders")
+    local make_entry = require("telescope.make_entry")
+    local pickers = require("telescope.pickers")
     local conf = require("telescope.config").values
-
+    local sorters = require("telescope.sorters")
+    local actions = require("telescope.actions")
+    local conf = require("telescope.config").values
 
     require("telescope").setup({
         defaults = {
+            file_ignore_patterns = {
+                "^target",
+                "%.aux",
+                "%.toc",
+                "%.pdf",
+                "%.out",
+                "%.log",
+                "%.png",
+                "%.jpg",
+                "%.jpeg",
+                ".repro/*",
+                ".DS_Store",
+            },
             sorting_strategy = "ascending",
             prompt_prefix = "   ",
             selection_caret = "  ",
@@ -98,18 +110,18 @@ local actions = require("telescope.actions")
             layout_config = {
                 preview_cutoff = 70, -- disable preview when less than 70 loc are available
                 prompt_position = "top",
-                width=0.85,
-                height=0.9,
-                horizontal= {
-                    preview_width=0.55,
-                    results_width=0.8,
+                width = 0.85,
+                height = 0.9,
+                horizontal = {
+                    preview_width = 0.55,
+                    results_width = 0.8,
                 },
-                vertical={
-                    mirror=false
+                vertical = {
+                    mirror = false,
                 },
             },
             mappings = {
-                n={
+                n = {
                     ["<C-j>"] = actions.move_selection_next,
                     ["<C-k>"] = actions.move_selection_previous,
                     ["<C-d>"] = actions.preview_scrolling_up,
@@ -121,7 +133,7 @@ local actions = require("telescope.actions")
                     ["<C-o>"] = actions.select_vertical,
                     ["<C-l>"] = actions_layout.toggle_preview,
                 },
-                i={
+                i = {
                     ["<C-j>"] = actions.move_selection_next,
                     ["<C-k>"] = actions.move_selection_previous,
                     ["<C-d>"] = actions.preview_scrolling_up,
@@ -134,7 +146,7 @@ local actions = require("telescope.actions")
                     ["<C-l>"] = actions_layout.toggle_preview,
 
                     ["<C-c>"] = fb_actions.create,
-                    ["<a-cr>"] = fb_actions.create_from_prompt
+                    ["<a-cr>"] = fb_actions.create_from_prompt,
                 },
             },
         },
@@ -147,7 +159,7 @@ local actions = require("telescope.actions")
                     "--files",
                     "--hidden",
                     "--no-ignore",
-                    "--smart-case"
+                    "--smart-case",
                 },
             },
         },
