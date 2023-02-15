@@ -75,7 +75,11 @@ function colors.new_theme(theme)
     -- require("omega.modules.bufferline").config()
     -- require("omega.modules.heirline").config()
     loadfile(vim.fn.stdpath("cache") .. "/omega/highlights")()
-    -- require("colorscheme_switcher").new_scheme()
+    vim.api.nvim_exec_autocommands("User", {
+        pattern = "OmegaNewTheme",
+    })
+    -- TODO: eventually remove
+    require("colorscheme_switcher").new_scheme(theme)
 end
 
 return colors
