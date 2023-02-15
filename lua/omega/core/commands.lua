@@ -7,3 +7,7 @@ end, {
         return require("omega.utils").get_themes()
     end,
 })
+
+vim.api.nvim_create_user_command("ViewColors", function()
+    require("omega.colors.extras.color_viewer").view_colors()
+end, { desc = "View Colors", nargs = 0 })
