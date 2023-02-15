@@ -3,4 +3,7 @@ return {
     { "rcarriga/nvim-notify" },
     { "MunifTanjim/nui.nvim" },
     { "nvim-lua/plenary.nvim" },
+    {
+        dir = "~/neovim_plugins/colorscheme_switcher/",
+    },
 }
