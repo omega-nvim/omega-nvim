@@ -162,7 +162,7 @@ local function tablist()
     end
 
     local new_tabtn = "%#TablineTabNew#%@NewTab@  %X"
-    local tabstoggleBtn = "%#TablineTabToggle#%@ToggleTabs@ TABS %X"
+    local tabstoggleBtn = "%#TablineTabToggle#%@ToggleTabs@  %X"
     if vim.g.tabs_collapsed == 1 then
         return new_tabtn .. "%#TablineTabToggle#%@ToggleTabs@   %X" .. "%#TablineTabClose#" .. "%@CloseTab@  %X"
     else
