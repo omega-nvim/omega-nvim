@@ -57,6 +57,19 @@ function utils.border()
     }
 end
 
+--- Gets the length of the longest item in a list
+---@param items table
+---@return integer
+function utils.longest(items)
+    local longest = 0
+    for _, item in pairs(items) do
+        if #item > longest then
+            longest = #item
+        end
+    end
+    return longest
+end
+
 --- Appends a `,` to the current line
 function utils.append_comma()
     -- save cursor position
