@@ -117,3 +117,17 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     end,
     desc = "Map q to close some buffers",
 })
+
+vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(args)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        client.server_capabilities.semanticTokensProvider = nil
+    end,
+})
+
+vim.api.nvim_create_autocmd("CursorHold", {
+    group = vim.api.nvim_create_augroup("lsp_float", {}),
+    callback = function()
+        vim.diagnostic.open_float()
+    end,
+})
