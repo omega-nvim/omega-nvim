@@ -95,6 +95,7 @@ function telescope.config()
                 ".repro/*",
                 ".DS_Store",
             },
+            initial_mode = "insert",
             sorting_strategy = "ascending",
             prompt_prefix = "   ",
             selection_caret = "  ",
@@ -162,6 +163,14 @@ function telescope.config()
                     "--smart-case",
                 },
             },
+            buffers = {
+                theme = "dropdown",
+                height = 0.3,
+                width = 0.5,
+                preview = {
+                    hide_on_startup = true,
+                },
+            },
         },
         extensions = {
             fzf = {
@@ -173,6 +182,7 @@ function telescope.config()
         },
     })
     require("telescope").load_extension("fzf")
+    require("telescope").load_extension("file_browser")
 end
 
 return telescope
