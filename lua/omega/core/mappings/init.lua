@@ -59,6 +59,16 @@ end, { desc = " Insert empty line above" })
 map("n", "<leader>ii", "i <esc>l", { desc = " Insert space before", noremap = true })
 map("n", "<leader>ia", "a <esc>h", { desc = " Insert space after", noremap = true })
 
+map("n", "<leader>p", '"0p', { desc = " Paste Last Yank", noremap = true })
+
+map("n", "0", function()
+    if vim.fn.match(vim.fn.getline(vim.fn.line(".")), [[\S]]) == (vim.fn.col(".") - 1) then
+        return "0"
+    else
+        return "^"
+    end
+end, { noremap = true, expr = true, desc = "Goto Beginning of text, then line" })
+
 map("i", " ", "<right>", { noremap = true, desc = "Move right" })
 
 map("n", ",,", function()
