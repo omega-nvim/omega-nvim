@@ -131,3 +131,14 @@ vim.api.nvim_create_autocmd("CursorHold", {
         vim.diagnostic.open_float()
     end,
 })
+
+vim.api.nvim_create_autocmd("UIEnter", {
+    once = true,
+    callback = function()
+        local ffi = require("ffi")
+        local pnano = assert(ffi.new("nanotime[?]", 1))
+        local CLOCK_PROCESS_CPUTIME_ID = jit.os == "OSX" and 12 or 2
+        ffi.C.clock_gettime(CLOCK_PROCESS_CPUTIME_ID, pnano)
+        _G.real_startuptime = tonumber(pnano[0].tv_sec) / 1e6 + tonumber(pnano[0].tv_nsec) / 1e6
+    end,
+})
