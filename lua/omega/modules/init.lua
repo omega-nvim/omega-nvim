@@ -16,5 +16,10 @@ return {
             vim.cmd.ColorizerAttachToBuffer()
         end,
     },
+    {
+        "max397574/better-escape.nvim",
+        event = { "InsertEnter" },
+        config = true,
+    },
     { import = "omega.custom" },
 }
