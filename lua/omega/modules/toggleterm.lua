@@ -59,23 +59,25 @@ local function toggle_lazygit()
 end
 
 toggleterm.init = function()
-    vim.keymap.set("n", "<leader>r", function()
-        run_file()
-    end, { noremap = true })
-    vim.keymap.set("n", "<c-t>", function()
-        require("toggleterm.terminal").Terminal:new({ close_on_exit = true }):toggle()
-    end, {
-        noremap = true,
-        silent = true,
-    })
-    vim.keymap.set("n", "<c-g>", function()
-        toggle_lazygit()
-    end, {
-        noremap = true,
-        silent = true,
-    })
-    vim.keymap.set("t", "<c-g>", "<cmd>ToggleTerm<CR>", { noremap = true, silent = true })
-    vim.keymap.set("t", "<c-t>", "<cmd>ToggleTerm<CR>", { noremap = true, silent = true })
+    vim.defer_fn(function()
+        vim.keymap.set("n", "<leader>r", function()
+            run_file()
+        end, { noremap = true })
+        vim.keymap.set("n", "<c-t>", function()
+            require("toggleterm.terminal").Terminal:new({ close_on_exit = true }):toggle()
+        end, {
+            noremap = true,
+            silent = true,
+        })
+        vim.keymap.set("n", "<c-g>", function()
+            toggle_lazygit()
+        end, {
+            noremap = true,
+            silent = true,
+        })
+        vim.keymap.set("t", "<c-g>", "<cmd>ToggleTerm<CR>", { noremap = true, silent = true })
+        vim.keymap.set("t", "<c-t>", "<cmd>ToggleTerm<CR>", { noremap = true, silent = true })
+    end, 1)
 end
 
 toggleterm.config = function()
