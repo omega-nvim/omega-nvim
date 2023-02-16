@@ -1,4 +1,5 @@
 require("omega.core.mappings.telescope")
+require("omega.core.mappings.tabline")
 
 local map = vim.keymap.set
 

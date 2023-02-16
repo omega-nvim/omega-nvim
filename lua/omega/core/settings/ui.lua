@@ -9,6 +9,8 @@ opt.conceallevel = 2
 opt.relativenumber = true
 opt.number = true
 opt.foldlevel = 100
+opt.tabline = "%!v:lua.require('omega.modules.ui.tabline').run()"
+opt.showtabline = 1
 
 vim.defer_fn(function()
     local base16 = require("omega.colors.themes." .. vim.g.colors_name).base16
@@ -37,7 +39,7 @@ vim.defer_fn(function()
     opt.guicursor = "n-v-sm:block,i-c-ci-ve:ver25,r-cr-o:hor20"
     opt.showmode = false
     opt.splitkeep = "screen"
-    vim.opt.fillchars = {
+    opt.fillchars = {
         eob = " ",
         vert = "║",
         horiz = "═",

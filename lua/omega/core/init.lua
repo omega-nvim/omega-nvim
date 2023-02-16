@@ -1,6 +1,8 @@
 require("omega.core.settings")
 require("omega.core.lazy")
 require("omega.core.autocommands")
+require("omega.modules.ui.tabline")
+vim.t.bufs = vim.api.nvim_list_bufs()
 vim.defer_fn(function()
     require("omega.core.mappings")
     require("omega.core.commands")
