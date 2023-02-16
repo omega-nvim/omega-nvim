@@ -8,7 +8,7 @@ map("n", "<leader>bp", function()
 end, { desc = "﩯Buffer Previous" })
 
 map("n", "<leader>bd", function()
-    require("omega.modules.ui.tabline").close_buf()
+    require("omega.modules.ui.tabline").close_buf(0)
 end, { desc = "﩯Buffer Close" })
 
 map("n", "<leader>tN", function()
