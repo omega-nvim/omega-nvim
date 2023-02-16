@@ -61,7 +61,7 @@ function tabline.close_buf(bufnr)
         print("Save the buffer!")
         return
     end
-    bufnr = bufnr or api.nvim_get_current_buf()
+    bufnr = (bufnr == 0 or not bufnr) and api.nvim_get_current_buf() or bufnr
     tabline.prev_buf()
     cmd.bd(bufnr)
 end
