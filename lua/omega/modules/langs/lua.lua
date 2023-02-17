@@ -1,13 +1,9 @@
-local lua_cmd = {
-    vim.fn.expand("~") .. "/lua-language-server/bin/lua-language-server",
-}
 local function on_attach(client, bufnr)
     require("omega.modules.lsp.on_attach").setup(client, bufnr)
 end
 
 local sumneko_lua_server = {
     on_attach = on_attach,
-    cmd = lua_cmd,
     flags = {
         debounce_text_changes = 150,
     },
