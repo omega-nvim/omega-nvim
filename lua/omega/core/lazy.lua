@@ -11,8 +11,11 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.runtimepath:prepend(lazypath)
 
-require("lazy").setup(
-    "omega.modules",
+require("lazy").setup({
+    spec = {
+        { import = "omega.modules" },
+        { import = "omega.custom.modules" },
+    },
     vim.tbl_deep_extend("force", {
         defaults = {
             lazy = true,
@@ -71,5 +74,5 @@ require("lazy").setup(
                 },
             },
         },
-    }, require("omega.custom.config.lazy"))
-)
+    }, require("omega.custom.config.lazy")),
+})

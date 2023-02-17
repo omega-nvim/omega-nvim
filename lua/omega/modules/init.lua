@@ -21,5 +21,4 @@ return {
         event = { "InsertEnter" },
         config = true,
     },
-    { import = "omega.custom.modules" },
 }
