@@ -18,6 +18,11 @@ require("lazy").setup(
             lazy = true,
         },
         ui = {
+            custom_keys = {
+                ["<leader>?"] = function(plugin)
+                    vim.pretty_print(plugin)
+                end,
+            },
             icons = {
                 lazy = "鈴",
             },
