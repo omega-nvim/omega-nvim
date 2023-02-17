@@ -48,7 +48,7 @@ function colors.compile_theme(theme)
     end
     local file = io.open(highlight_folder .. "highlights", "wb")
     if not file then
-        print("error opening", highlight_file)
+        print("error opening", highlight_folder .. "highlights")
         return
     end
     loadstring(table.concat(lines, "\n"), "=")()
@@ -77,9 +77,8 @@ function colors.new_theme(theme)
     loadfile(vim.fn.stdpath("cache") .. "/omega/highlights")()
     vim.api.nvim_exec_autocmds("User", {
         pattern = "OmegaNewTheme",
+        data = theme,
     })
-    -- TODO: eventually remove
-    require("colorscheme_switcher").new_scheme(theme)
 end
 
 return colors
