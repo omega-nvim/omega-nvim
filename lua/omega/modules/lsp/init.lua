@@ -6,8 +6,8 @@ local lsp = {
 lsp.dependencies = {
     {
         "folke/neodev.nvim",
-        config = function()
-            require("omega.modules.langs.lua")
+        config = function(opts)
+            require("omega.modules.langs.lua").setup(opts)
         end,
     },
 }
@@ -16,8 +16,6 @@ function lsp.config()
     require("omega.modules.langs.rust")
     vim.api.nvim_set_hl(0, "DiagnosticHeader", { link = "Special" })
     local utils = require("omega.utils")
-
-    local root_pattern = require("lspconfig.util").root_pattern
 
     local signs = {
         Error = "",

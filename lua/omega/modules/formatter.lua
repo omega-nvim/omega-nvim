@@ -1,10 +1,7 @@
 local formatter = {
     "mhartington/formatter.nvim",
     cmd = { "Format" },
-}
-
-formatter.config = function()
-    require("formatter").setup({
+    opts = {
         filetype = {
             lua = {
                 function()
@@ -35,18 +32,6 @@ formatter.config = function()
                     }
                 end,
             },
-            tex = {
-                function()
-                    return {
-                        exe = "/usr/local/Cellar/latexindent/3.20.1/bin/latexindent",
-                        args = {
-                            "-g",
-                            "/dev/null",
-                        },
-                        stdin = true,
-                    }
-                end,
-            },
             json = {
                 function()
                     return {
@@ -56,17 +41,12 @@ formatter.config = function()
                     }
                 end,
             },
-            query = {
-                function()
-                    return {
-                        exe = "~/programming/rust/query-fmt/target/debug/query-fmt",
-                        args = { vim.fn.expand("%"), "--preview" },
-                        stdin = true,
-                    }
-                end,
-            },
         },
-    })
+    },
+}
+
+formatter.config = function(opts)
+    require("formatter").setup(opts._.super.opts)
     vim.api.nvim_create_autocmd("User", {
         pattern = "FormatterPost",
         callback = function()

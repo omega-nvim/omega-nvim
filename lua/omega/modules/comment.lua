@@ -1,10 +1,7 @@
 local comment = {
     "numToStr/Comment.nvim",
     keys = { "<leader>c", "gb", { "<leader>c", mode = "x" } },
-}
-
-comment.config = function()
-    require("Comment").setup({
+    opts = {
         toggler = {
             line = "<leader>cc",
             block = "gbc",
@@ -14,7 +11,7 @@ comment.config = function()
             line = "<leader>c",
             block = "gb",
         },
-    })
-end
+    },
+}
 
 return comment
