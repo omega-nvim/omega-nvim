@@ -45,8 +45,8 @@ local formatter = {
     },
 }
 
-formatter.config = function(opts)
-    require("formatter").setup(opts._.super.opts)
+formatter.config = function(_, opts)
+    require("formatter").setup(opts)
     vim.api.nvim_create_autocmd("User", {
         pattern = "FormatterPost",
         callback = function()

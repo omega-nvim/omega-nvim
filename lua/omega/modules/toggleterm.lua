@@ -1,5 +1,23 @@
 local toggleterm = {
     "akinsho/toggleterm.nvim",
+    opts = {
+        hide_numbers = true,
+        start_in_insert = true,
+        insert_mappings = true,
+        shade_terminals = true,
+        shading_factor = "3",
+        persist_size = true,
+        close_on_exit = false,
+        direction = "float",
+        float_opts = {
+            border = require("omega.utils").border(),
+            winblend = 0,
+            highlights = {
+                border = "FloatBorder",
+                background = "NormalFloat",
+            },
+        },
+    },
 }
 
 local exp = vim.fn.expand
@@ -80,25 +98,8 @@ toggleterm.init = function()
     end, 1)
 end
 
-toggleterm.config = function()
-    require("toggleterm").setup({
-        hide_numbers = true,
-        start_in_insert = true,
-        insert_mappings = true,
-        shade_terminals = true,
-        shading_factor = "3",
-        persist_size = true,
-        close_on_exit = false,
-        direction = "float",
-        float_opts = {
-            border = require("omega.utils").border(),
-            winblend = 0,
-            highlights = {
-                border = "FloatBorder",
-                background = "NormalFloat",
-            },
-        },
-    })
+toggleterm.config = function(_, opts)
+    require("toggleterm").setup(opts)
 end
 
 return toggleterm
