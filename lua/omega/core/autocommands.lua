@@ -37,6 +37,14 @@ vim.api.nvim_create_autocmd("BufDelete", {
     end,
 })
 
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead", "TabEnter", "TermOpen" }, {
+  callback = function()
+    if #vim.fn.getbufinfo { buflisted = 1 } >= 2 or #vim.api.nvim_list_tabpages() >= 2 then
+      vim.opt.showtabline = 2
+    end
+  end,
+})
+
 -- Create directories inside which buffer is recursively
 vim.api.nvim_create_autocmd("BufWritePre", {
     callback = function()
