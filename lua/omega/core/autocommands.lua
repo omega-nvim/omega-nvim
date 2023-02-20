@@ -1,4 +1,6 @@
-vim.api.nvim_create_autocmd({ "BufAdd", "BufEnter", "tabnew" }, {
+local autocmd = vim.api.nvim_create_autocmd
+
+autocmd({ "BufAdd", "BufEnter", "tabnew" }, {
     callback = function(args)
         if vim.t.bufs == nil then
             vim.t.bufs = vim.api.nvim_get_current_buf() == args.buf and {} or { args.buf }
@@ -20,7 +22,7 @@ vim.api.nvim_create_autocmd({ "BufAdd", "BufEnter", "tabnew" }, {
     end,
 })
 
-vim.api.nvim_create_autocmd("BufDelete", {
+autocmd("BufDelete", {
     callback = function(args)
         for _, tab in ipairs(vim.api.nvim_list_tabpages()) do
             local bufs = vim.t[tab].bufs
@@ -37,16 +39,28 @@ vim.api.nvim_create_autocmd("BufDelete", {
     end,
 })
 
-vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead", "TabEnter", "TermOpen" }, {
-  callback = function()
-    if #vim.fn.getbufinfo { buflisted = 1 } >= 2 or #vim.api.nvim_list_tabpages() >= 2 then
-      vim.opt.showtabline = 2
-    end
-  end,
+autocmd({ "BufNewFile", "BufRead", "TabEnter", "TermOpen" }, {
+    callback = function()
+        if #vim.fn.getbufinfo({ buflisted = 1 }) >= 2 or #vim.api.nvim_list_tabpages() >= 2 then
+            vim.opt.showtabline = 2
+        end
+    end,
+})
+
+-- -- show cursor line only in active window
+autocmd({ "InsertLeave", "WinEnter", "CmdlineLeave" }, {
+    pattern = "*",
+    command = "set cursorline",
+    desc = "Enable cursorline",
+})
+autocmd({ "InsertEnter", "WinLeave", "CmdlineEnter" }, {
+    pattern = "*",
+    command = "set nocursorline",
+    desc = "Disable cursorline",
 })
 
 -- Create directories inside which buffer is recursively
-vim.api.nvim_create_autocmd("BufWritePre", {
+autocmd("BufWritePre", {
     callback = function()
         if vim.tbl_contains({ "oil" }, vim.bo.ft) then
             return
@@ -60,7 +74,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 -- Go to last position in buffer
-vim.api.nvim_create_autocmd({ "BufRead" }, {
+autocmd({ "BufRead" }, {
     pattern = "*",
     callback = function()
         require("omega.utils").last_place()
@@ -69,7 +83,7 @@ vim.api.nvim_create_autocmd({ "BufRead" }, {
 })
 
 -- Enable bulitin treesitter
-vim.api.nvim_create_autocmd("FileType", {
+autocmd("FileType", {
     pattern = { "lua", "vim", "help", "c" },
     callback = function()
         vim.treesitter.start()
@@ -78,7 +92,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- Strip indent from text yanked to clipboard
-vim.api.nvim_create_autocmd({ "TextYankPost" }, {
+autocmd({ "TextYankPost" }, {
     callback = function()
         if vim.v.event.regname ~= "+" then
             return
@@ -103,7 +117,7 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 })
 
 -- Highlight yanked text
-vim.api.nvim_create_autocmd({ "TextYankPost" }, {
+autocmd({ "TextYankPost" }, {
     pattern = "*",
     callback = function()
         vim.highlight.on_yank({ higrou = "IncSearch", timeout = 500 })
@@ -112,7 +126,7 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
     desc = "Highlight yanked text",
 })
 
-vim.api.nvim_create_autocmd({ "FileType" }, {
+autocmd({ "FileType" }, {
     pattern = { "help", "startuptime", "qf", "lspinfo", "man", "tsplayground" },
     callback = function()
         vim.keymap.set("n", "q", function()
@@ -126,21 +140,21 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     desc = "Map q to close some buffers",
 })
 
-vim.api.nvim_create_autocmd("LspAttach", {
+autocmd("LspAttach", {
     callback = function(args)
         local client = vim.lsp.get_client_by_id(args.data.client_id)
         client.server_capabilities.semanticTokensProvider = nil
     end,
 })
 
-vim.api.nvim_create_autocmd("CursorHold", {
+autocmd("CursorHold", {
     group = vim.api.nvim_create_augroup("lsp_float", {}),
     callback = function()
         vim.diagnostic.open_float()
     end,
 })
 
-vim.api.nvim_create_autocmd("UIEnter", {
+autocmd("UIEnter", {
     once = true,
     callback = function()
         local ffi = require("ffi")
