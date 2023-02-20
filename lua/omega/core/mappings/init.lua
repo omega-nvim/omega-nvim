@@ -125,3 +125,16 @@ end, { desc = " Quickfix Previous" })
 map("n", "<leader>qn", function()
     vim.cmd.copen()
 end, { desc = " Quickfix Open" })
+
+map(
+    "n",
+    "j",
+    [[(v:count > 1 ? "m'" . v:count : '') . 'j']],
+    { noremap = true, expr = true, desc = "Add j with count to jumplist" }
+)
+map(
+    "n",
+    "k",
+    [[(v:count > 1 ? "m'" . v:count : '') . 'k']],
+    { noremap = true, expr = true, desc = "Add k with count to jumplist" }
+)
