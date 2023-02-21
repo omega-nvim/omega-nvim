@@ -42,6 +42,9 @@ local defaults = {
                     checkThirdParty = false,
                     maxPreload = 1000,
                     preloadFileSize = 1000,
+                    library = {
+                        vim.fn.stdpath("config") .. "/lua/omega/types",
+                    },
                 },
             },
         },
