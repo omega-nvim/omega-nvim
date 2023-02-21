@@ -32,6 +32,9 @@ treesitter.opts = {
     },
     query_linter = {
         enable = true,
+        disable = function(_, buf)
+            return #vim.api.nvim_buf_get_lines(buf, 0, -1, false) > 20
+        end,
         use_virtual_text = true,
         lint_events = { "BufWrite", "CursorHold" },
     },
