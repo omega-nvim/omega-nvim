@@ -2,14 +2,15 @@ local config = {}
 
 config.ui = {
     cmdline = {
-        --- "normal"|"top"|"bottom"
+        ---@type CmdlinePosition
         position = "normal",
     },
     statusline = {},
+    ---@type OmegaColorscheme
     colorscheme = "onedark",
     telescope = {
         --- Whether to show borders or not
-        --- true|false
+        ---@type boolean
         borders = false,
         --- How to highlight the titles
         --- "blocks"|"no_bg"
@@ -22,7 +23,6 @@ config.ui = {
         --- How the icons should look
         --- "blended"|"fg_colored"
         icons = "blended",
-        ---@alias CmpFields "source"|"kind_icon"|"type"|"text"
         ---@type CmpFields[]
         fields = {
             "kind_icon",
