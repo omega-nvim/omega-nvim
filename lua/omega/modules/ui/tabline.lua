@@ -23,7 +23,7 @@ function tabline.next_buf()
     for idx, buf in ipairs(buffers) do
         if api.nvim_get_current_buf() == buf then
             if idx == #buffers then
-                cmd.b(1)
+                cmd.b(buffers[1])
                 return
             else
                 cmd.b(buffers[idx + 1])
