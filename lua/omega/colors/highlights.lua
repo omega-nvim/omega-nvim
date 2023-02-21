@@ -42,9 +42,6 @@ local highlights = {
     ["CursorLine"] = { bg = base16.base01 },
     ["CursorLineNr"] = { fg = base16.base04 },
     ["QuickFixLine"] = { bg = base16.base01 },
-    ["TabLine"] = { fg = base16.base03, bg = base16.base01 },
-    ["TabLineFill"] = { fg = base16.base03, bg = base16.base01 },
-    ["TabLineSel"] = { fg = base16.base0B, bg = base16.base01 },
     ["Boolean"] = { fg = base16.base09 },
     ["Character"] = { fg = base16.base08 },
     ["Conditional"] = { fg = base16.base0E, italic = true },
@@ -345,7 +342,7 @@ local highlights = {
     TablineCloseButton = { fg = colors.red, bg = colors.black2 },
     TablineCloseButtonVisible = { fg = colors.red, bg = colors.black2 },
     TablineCloseButtonSelected = { fg = colors.red, bg = colors.one_bg2 },
-    TablineFill = { fg = colors.grey_fg, bg = colors.darker_black },
+    TablineFill = { fg = colors.darker_black, bg = colors.darker_black },
     TablineIndicatorSelected = { fg = colors.black2, bg = colors.black },
     TablineModified = { fg = colors.red, bg = colors.black2 },
     TablineModifiedVisible = { fg = colors.red, bg = colors.black2 },
@@ -360,6 +357,18 @@ local highlights = {
     TablineTabSelected = { fg = colors.black2, bg = colors.nord_blue },
     TablineTabClose = { fg = colors.red, bg = colors.darker_black },
 }
+
+highlights["CmpItemAbbrMatch"] = { fg = colors.blue }
+highlights["CmpSource"] = { fg = colors.grey_fg }
+if config.ui.cmp.border == "half" then
+    highlights["CmpBorder"] = { fg = colors.darker_black, bg = colors.black }
+    highlights["Pmenu"] = { fg = colors.white, bg = colors.darker_black }
+elseif config.ui.cmp.border == "rounded" then
+    highlights["CmpBorder"] = { fg = colors.white, bg = colors.black }
+    highlights["Pmenu"] = { fg = colors.white, bg = colors.darker_black }
+elseif config.ui.cmp.border == "none" then
+    highlights["Pmenu"] = { fg = colors.white, bg = colors.darker_black }
+end
 
 local kind_highlights = {
     Class = base16.base08,
@@ -391,14 +400,25 @@ local kind_highlights = {
     Structure = base16.base0E,
     Identifier = base16.base08,
 }
+
 local color_utils = require("omega.utils.colors")
-for kind_name, hl in pairs(kind_highlights) do
-    highlights[("CmpItemKind%s"):format(kind_name)] = {
-        fg = hl,
-        bg = color_utils.blend_colors(hl, base16.base00, 0.15),
-    }
-    highlights[("CmpItemKindMenu%s"):format(kind_name)] = { fg = hl }
-    highlights[("CmpItemKindBlock%s"):format(kind_name)] = { fg = color_utils.blend_colors(hl, base16.base00, 0.15) }
+if config.ui.cmp.icons == "blended" then
+    for kind_name, hl in pairs(kind_highlights) do
+        highlights[("CmpItemKind%s"):format(kind_name)] = {
+            fg = hl,
+            bg = color_utils.blend_colors(hl, base16.base00, 0.15),
+        }
+        highlights[("CmpItemKindMenu%s"):format(kind_name)] = { fg = hl }
+        highlights[("CmpItemKindBlock%s"):format(kind_name)] =
+            { fg = color_utils.blend_colors(hl, base16.base00, 0.15) }
+    end
+elseif config.ui.cmp.icons == "fg_colored" then
+    for kind_name, hl in pairs(kind_highlights) do
+        highlights[("CmpItemKindMenu%s"):format(kind_name)] = { fg = hl }
+        highlights[("CmpItemKind%s"):format(kind_name)] = {
+            fg = hl,
+        }
+    end
 end
 for i = 1, 6 do
     highlights["@neorg.todo_items.urgent." .. i] = { fg = base16.base0F }

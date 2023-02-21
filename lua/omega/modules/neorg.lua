@@ -47,4 +47,15 @@ local neorg_mod = {
     },
 }
 
+function neorg_mod.config(_, opts)
+    require("neorg").setup(opts)
+    local ok, _ = pcall(require, "cmp")
+    if ok then
+        require("omega.modules.cmp").config()
+        neorg.modules.load_module("core.norg.completion", nil, {
+            engine = "nvim-cmp",
+        })
+    end
+end
+
 return neorg_mod
