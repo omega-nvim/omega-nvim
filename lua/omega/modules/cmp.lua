@@ -246,8 +246,8 @@ function cmp_module.config(_, opts)
         local cmp_autopairs = require("nvim-autopairs.completion.cmp")
         cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
     end
-    cmp.setup(opts)
     if not neorg then
+        cmp.setup(opts)
         return
     end
     local ok = pcall(neorg.modules.load_module, "core.norg.completion", nil, {
@@ -255,8 +255,8 @@ function cmp_module.config(_, opts)
     })
     if ok then
         table.insert(opts.sources, { name = "neorg", priority = 6 })
-        cmp.setup(opts)
     end
+    cmp.setup(opts)
 end
 
 return cmp_module

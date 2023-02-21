@@ -49,12 +49,17 @@ local neorg_mod = {
 
 function neorg_mod.config(_, opts)
     require("neorg").setup(opts)
-    local ok, _ = pcall(require, "cmp")
+    local ok, cmp = pcall(require, "cmp")
     if ok then
-        require("omega.modules.cmp").config()
-        neorg.modules.load_module("core.norg.completion", nil, {
+        local cmp_opts =
+            require("lazy.core.plugin").values(require("lazy.core.config").plugins["nvim-cmp"], "opts", false)
+        local mod_ok = pcall(neorg.modules.load_module, "core.norg.completion", nil, {
             engine = "nvim-cmp",
         })
+        if mod_ok then
+            table.insert(cmp_opts.sources, { name = "neorg", priority = 6 })
+        end
+        cmp.setup(cmp_opts)
     end
 end
 
