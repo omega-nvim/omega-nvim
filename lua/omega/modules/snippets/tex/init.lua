@@ -24,3 +24,32 @@ local conds = require("luasnip.extras.expand_conditions")
 local postfix = require("luasnip.extras.postfix").postfix
 local types = require("luasnip.util.types")
 local parse = require("luasnip.util.parser").parse_snippet
+
+local function reuse(idx)
+    return f(function(args)
+        return args[1][1]
+    end, { idx })
+end
+
+ls.add_snippets("tex", {
+    s("sec", {
+        t("\\section{"),
+        i(1),
+        t("}"),
+    }),
+    s("ssec", {
+        t("\\subsection{"),
+        i(1),
+        t("}"),
+    }),
+    s("sssec", {
+        t("\\subsubsection{"),
+        i(1),
+        t("}"),
+    }),
+    s("para", {
+        t("\\paragraph{"),
+        i(1),
+        t("}"),
+    }),
+})
