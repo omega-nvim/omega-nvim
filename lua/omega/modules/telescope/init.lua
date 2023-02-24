@@ -26,6 +26,9 @@ telescope.opts = {
             "%.jpg",
             "%.jpeg",
             ".repro/*",
+            "build/*",
+            ".docusaurus/*",
+            "node_modules/*",
             ".DS_Store",
         },
         initial_mode = "insert",
@@ -42,7 +45,7 @@ telescope.opts = {
             },
         },
         layout_config = {
-            preview_cutoff = 70, -- disable preview when less than 70 loc are available
+            preview_cutoff = 90,
             prompt_position = "top",
             width = 0.85,
             height = 0.9,
