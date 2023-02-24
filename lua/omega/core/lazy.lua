@@ -28,6 +28,9 @@ local settings = vim.tbl_deep_extend("force", {
     diff = {
         cmd = "git",
     },
+    change_detection = {
+        notify = false,
+    },
     performance = {
         rtp = {
             paths = {
