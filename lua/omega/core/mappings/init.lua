@@ -138,3 +138,7 @@ map(
     [[(v:count > 1 ? "m'" . v:count : '') . 'k']],
     { noremap = true, expr = true, desc = "Add k with count to jumplist" }
 )
+
+map("n", "<leader>vc", function()
+    vim.cmd.ColorizerAttachToBuffer()
+end, { desc = " View Colors" })
