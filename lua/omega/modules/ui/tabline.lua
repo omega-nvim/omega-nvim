@@ -64,6 +64,7 @@ function tabline.close_buf(bufnr)
     bufnr = (bufnr == 0 or not bufnr) and api.nvim_get_current_buf() or bufnr
     tabline.prev_buf()
     cmd.bd(bufnr)
+    vim.t.bufs[bufnr] = nil
 end
 
 vim.cmd([[
@@ -108,7 +109,6 @@ end
 
 local function get_file_info(name, bufnr)
     if name == " No Name " then
-        -- local padding = string.rep(" ", math.floor((24 - #name) / 2))
         local padding = "       "
         local selected = api.nvim_get_current_buf() == bufnr
         name = (selected and "%#TablineBufferSelected#" or "%#TablineBufferVisible#") .. name
@@ -118,17 +118,16 @@ local function get_file_info(name, bufnr)
         devicons = require("nvim-web-devicons")
     end
     local icon, hl = devicons.get_icon(name, name:match("%a+$"), { default = true })
-    local info = " " .. icon .. " " .. name .. " "
-    local padding = string.rep(" ", math.floor((24 - #info) / 2))
     local selected = api.nvim_get_current_buf() == bufnr
+    local padding = string.rep(" ", 15 - #(#name > 15 and name:sub(1, 12) .. "..." or name))
     icon = (selected and fg_bg_highlight(hl, "TablineBufferSelected") or fg_bg_highlight(hl, "TablineBufferVisible"))
         .. " "
         .. icon
     name = (selected and "%#TablineBufferSelected#" or "%#TablineBufferVisible#")
         .. " "
-        .. (#name > 20 and name:sub(1, 15) .. "..." or name)
+        .. (#name > 15 and name:sub(1, 12) .. "..." or name)
         .. " "
-    return padding .. icon .. name .. padding
+    return icon .. name .. padding
 end
 
 local function bufferlist()
@@ -144,7 +143,7 @@ local function bufferlist()
             close_button = "%#TablineCloseButtonVisible#" .. close_button
         end
         name = "%" .. bufnr .. "@GotoBuf@" .. get_file_info(name, bufnr) .. close_button
-        buffers = buffers .. "%#TablineFill#" .. name
+        buffers = buffers .. name .. "%#TablineFill#   "
     end
     return buffers .. "%#TablineFill#" .. "%="
 end
