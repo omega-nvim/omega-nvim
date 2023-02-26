@@ -3,6 +3,7 @@ return {
     { "rcarriga/nvim-notify" },
     { "MunifTanjim/nui.nvim" },
     { "nvim-lua/plenary.nvim" },
+    { "max397574/omega-themes", lazy = true },
     {
         "xiyaowong/nvim-colorizer.lua",
         cmd = { "ColorizerAttachToBuffer" },
