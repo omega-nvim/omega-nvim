@@ -2,4 +2,4 @@
 
 ---@alias CmdlinePosition "normal"|"top"|"bottom"
 
----@alias OmegaColorscheme "onedark"
+---@alias OmegaColorscheme "onedark"|"tokyonight_storm"|"doom_one"|"kanagawa"|"everforest"
