@@ -19,7 +19,7 @@ local cmp_module = {
         },
     },
     opts = function()
-        local config = require("omega.config")
+        local config = require("omega.custom.config")
         local luasnip = require("luasnip")
         local cmp = require("cmp")
         local kind = require("omega.modules.lsp.kind")

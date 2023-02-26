@@ -5,7 +5,7 @@ local noice = {
 }
 
 function noice.config()
-    local config = require("omega.config")
+    local config = require("omega.custom.config")
     vim.o.lazyredraw = false
     local settings = {
         cmdline = {

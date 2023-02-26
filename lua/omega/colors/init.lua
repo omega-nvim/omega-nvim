@@ -60,7 +60,7 @@ function colors.new_theme(theme)
     vim.g.colors_name = theme
     package.loaded["omega.colors.highlights"] = nil
     package.loaded["omega.colors.custom"] = nil
-    package.loaded["omega.config"] = nil
+    package.loaded["omega.custom.config"] = nil
     package.loaded["bufferline"] = nil
     package.loaded["heirline"] = nil
     require("omega.colors").compile_theme(theme)

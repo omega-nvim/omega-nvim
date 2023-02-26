@@ -1,7 +1,7 @@
 local theme = require("omega.colors.themes." .. vim.g.colors_name)
 local colors = theme.colors
 local base16 = theme.base16
-local config = require("omega.config")
+local config = require("omega.custom.config")
 colors.tele_bg = colors.telescope_bg or colors.darker_black
 colors.tele_prompt = colors.telescope_prompt or colors.black2
 
@@ -173,10 +173,6 @@ local highlights = {
     ["@conceal"] = { fg = base16.base05 },
     ["@definition"] = { underline = true, sp = base16.base04 },
     ["@scope"] = { bold = true },
-    ["TSAnnotation"] = { fg = base16.base0F },
-    ["TSError"] = { fg = base16.base08 },
-    ["TSParameterReference"] = { fg = base16.base05 },
-    ["TSPunctDelimiter"] = { fg = base16.base0F },
     ["LspDiagnosticsDefaultError"] = { fg = base16.base08 },
     ["LspDiagnosticsDefaultWarning"] = { fg = base16.base0A },
     ["LspDiagnosticsDefaultWarn"] = { fg = base16.base0A },
