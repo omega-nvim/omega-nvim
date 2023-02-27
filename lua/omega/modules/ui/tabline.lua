@@ -3,6 +3,7 @@
 local api = vim.api
 local fn = vim.fn
 local cmd = vim.cmd
+local config = require("omega.custom.config").ui.tabline
 
 local tabline = {}
 
@@ -64,7 +65,11 @@ function tabline.close_buf(bufnr)
     bufnr = (bufnr == 0 or not bufnr) and api.nvim_get_current_buf() or bufnr
     tabline.prev_buf()
     cmd.bd(bufnr)
-    vim.t.bufs[bufnr] = nil
+    for i, buf in ipairs(vim.t.bufs or {}) do
+        if buf == bufnr then
+            table.remove(vim.t.bufs, i)
+        end
+    end
 end
 
 vim.cmd([[
@@ -119,13 +124,16 @@ local function get_file_info(name, bufnr)
     end
     local icon, hl = devicons.get_icon(name, name:match("%a+$"), { default = true })
     local selected = api.nvim_get_current_buf() == bufnr
-    local padding = string.rep(" ", 15 - #(#name > 15 and name:sub(1, 12) .. "..." or name))
+    local padding = string.rep(
+        " ",
+        config.max_width - #(#name > config.max_width and name:sub(1, config.max_width - 3) .. "..." or name)
+    )
     icon = (selected and fg_bg_highlight(hl, "TablineBufferSelected") or fg_bg_highlight(hl, "TablineBufferVisible"))
         .. " "
         .. icon
     name = (selected and "%#TablineBufferSelected#" or "%#TablineBufferVisible#")
         .. " "
-        .. (#name > 15 and name:sub(1, 12) .. "..." or name)
+        .. (#name > config.max_width and name:sub(1, config.max_width - 3) .. "..." or name)
         .. " "
     return icon .. name .. padding
 end
@@ -143,7 +151,17 @@ local function bufferlist()
             close_button = "%#TablineCloseButtonVisible#" .. close_button
         end
         name = "%" .. bufnr .. "@GotoBuf@" .. get_file_info(name, bufnr) .. close_button
-        buffers = buffers .. name .. "%#TablineFill#   "
+        local separator
+        if config.separator_style == "padding" then
+            separator = "%#TablineFill#   "
+        elseif config.separator_style == "thin" then
+            if selected then
+                separator = "%#TablineSeparatorSelected#▐"
+            else
+                separator = "%#TablineSeparator#▕"
+            end
+        end
+        buffers = buffers .. name .. separator
     end
     return buffers .. "%#TablineFill#" .. "%="
 end

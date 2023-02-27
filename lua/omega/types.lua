@@ -3,3 +3,5 @@
 ---@alias CmdlinePosition "normal"|"top"|"bottom"
 
 ---@alias OmegaColorscheme "onedark"|"tokyonight_storm"|"doom_one"|"kanagawa"|"everforest"
+
+---@alias TablineSeparatorStyle "thin"|"padding"|"angled"

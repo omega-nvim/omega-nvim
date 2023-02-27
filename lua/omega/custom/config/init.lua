@@ -6,6 +6,12 @@ config.ui = {
         position = "normal",
     },
     statusline = {},
+    tabline = {
+        ---@type TablineSeparatorStyle
+        separator_style = "padding",
+        ---@type number
+        max_width = 15,
+    },
     ---@type OmegaColorscheme
     colorscheme = "onedark",
     telescope = {
