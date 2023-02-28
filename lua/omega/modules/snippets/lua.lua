@@ -82,7 +82,7 @@ ls.add_snippets("lua", {
     }),
 
     s("inc", {
-        i(1, "thing"),
+        i(1),
         t(" = "),
         reuse(1),
 
@@ -92,7 +92,7 @@ ls.add_snippets("lua", {
     }),
 
     s("dec", {
-        i(1, "thing"),
+        i(1),
         t(" = "),
         reuse(1),
         t(" - "),
@@ -102,8 +102,8 @@ ls.add_snippets("lua", {
 
     s("inspect", {
         t("print("),
-        i(1, "variable"),
-        t(")"),
+        i(1),
+        t({ ")", "" }),
         t("vim.pretty_print("),
         reuse(1),
         t(")"),
