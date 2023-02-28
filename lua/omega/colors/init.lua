@@ -26,9 +26,9 @@ function colors.compile_theme(theme)
         end
         table.insert(lines, string.format([[vim.api.nvim_set_hl(0,"%s", {%s})]], group, options))
     end
-    local ok, highlights = pcall(require, "omega.colors.custom." .. vim.g.colors_name)
+    local ok, custom = pcall(require, "omega.colors.custom." .. vim.g.colors_name)
     if ok then
-        for group, values in pairs(highlights) do
+        for group, values in pairs(custom.highlights or {}) do
             local options = ""
             for optionname, value in pairs(values) do
                 if type(value) == "boolean" then
@@ -39,6 +39,9 @@ function colors.compile_theme(theme)
                 options = options .. optionname .. "=" .. value .. ","
             end
             table.insert(lines, string.format([[vim.api.nvim_set_hl(0,"%s", {%s})]], group, options))
+        end
+        for _, line in pairs(custom.code or {}) do
+            table.insert(lines, line)
         end
     end
     table.insert(lines, "end)")
