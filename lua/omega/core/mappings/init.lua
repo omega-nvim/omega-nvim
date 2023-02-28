@@ -5,12 +5,12 @@ require("omega.core.mappings.telescope")
 
 local map = vim.keymap.set
 
-map({ "v", "n" }, "<leader>y", '"+y', { noremap = true, silent = true, desc = " Yank to clipboard" })
+map({ "v", "n" }, "<leader>y", '"+y', { silent = true, desc = " Yank to clipboard" })
 
 map("n", "<esc>", function()
     require("notify").dismiss()
     vim.cmd.nohl()
-end, { noremap = true, silent = true, desc = "Clear highlight from search and close notifications" })
+end, { silent = true, desc = "Clear highlight from search and close notifications" })
 
 map("n", "zg", function()
     if vim.bo.spelllang == "en" then
@@ -31,10 +31,10 @@ map("n", "<leader>S", function()
     vim.cmd.Format()
 end, { desc = " Format" })
 
-map("n", "<c-l>", "<c-w>l", { noremap = true, desc = "Move to right window" })
-map("n", "<c-h>", "<c-w>h", { noremap = true, desc = "Move to left window" })
-map("n", "<c-k>", "<c-w>k", { noremap = true, desc = "Move to above window" })
-map("n", "<c-j>", "<c-w>j", { noremap = true, desc = "Move to below window" })
+map("n", "<c-l>", "<c-w>l", { desc = "Move to right window" })
+map("n", "<c-h>", "<c-w>h", { desc = "Move to left window" })
+map("n", "<c-k>", "<c-w>k", { desc = "Move to above window" })
+map("n", "<c-j>", "<c-w>j", { desc = "Move to below window" })
 
 map("n", "<leader>io", function()
     local lines = {}
@@ -69,9 +69,9 @@ map("n", "0", function()
     else
         return "^"
     end
-end, { noremap = true, expr = true, desc = "Goto Beginning of text, then line" })
+end, { expr = true, desc = "Goto Beginning of text, then line" })
 
-map("i", " ", "<right>", { noremap = true, desc = "Move right" })
+map("i", " ", "<right>", { desc = "Move right" })
 
 map("n", ",,", function()
     require("omega.utils").append_comma()
@@ -126,19 +126,11 @@ map("n", "<leader>qo", function()
     vim.cmd.copen()
 end, { desc = " Quickfix Open" })
 
-map(
-    "n",
-    "j",
-    [[(v:count > 1 ? "m'" . v:count : '') . 'j']],
-    { noremap = true, expr = true, desc = "Add j with count to jumplist" }
-)
-map(
-    "n",
-    "k",
-    [[(v:count > 1 ? "m'" . v:count : '') . 'k']],
-    { noremap = true, expr = true, desc = "Add k with count to jumplist" }
-)
+map("n", "j", [[(v:count > 1 ? "m'" . v:count : '') . 'j']], { expr = true, desc = "Add j with count to jumplist" })
+map("n", "k", [[(v:count > 1 ? "m'" . v:count : '') . 'k']], { expr = true, desc = "Add k with count to jumplist" })
 
 map("n", "<leader>vc", function()
     vim.cmd.ColorizerAttachToBuffer()
 end, { desc = " View Colors" })
+
+map("i", "<C-U>", "<ESC>b~hea", { silent = true })
