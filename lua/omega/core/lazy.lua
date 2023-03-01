@@ -15,6 +15,9 @@ local settings = vim.tbl_deep_extend("force", {
     defaults = {
         lazy = true,
     },
+    install = {
+        colorscheme = { require("omega.custom.config").ui.colorscheme },
+    },
     ui = {
         custom_keys = {
             ["<leader>?"] = function(plugin)
