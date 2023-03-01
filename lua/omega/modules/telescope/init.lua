@@ -11,6 +11,9 @@ telescope.dependencies = {
     {
         "nvim-telescope/telescope-file-browser.nvim",
     },
+    {
+        "debugloop/telescope-undo.nvim",
+    },
 }
 
 telescope.opts = {
@@ -148,6 +151,7 @@ function telescope.config(_, opts)
     require("telescope").setup(opts)
     require("telescope").load_extension("fzf")
     require("telescope").load_extension("file_browser")
+    require("telescope").load_extension("undo")
 end
 
 return telescope
