@@ -22,5 +22,5 @@ return {
         event = { "InsertEnter" },
         config = true,
     },
-    { "stevearc/oil.nvim", config = true },
+    { "stevearc/oil.nvim", config = true, cmd = { "Oil" } },
 }
