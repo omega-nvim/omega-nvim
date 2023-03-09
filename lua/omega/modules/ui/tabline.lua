@@ -65,11 +65,13 @@ function tabline.close_buf(bufnr)
     bufnr = (bufnr == 0 or not bufnr) and api.nvim_get_current_buf() or bufnr
     tabline.prev_buf()
     cmd.bd(bufnr)
-    for i, buf in ipairs(vim.t.bufs or {}) do
-        if buf == bufnr then
-            table.remove(vim.t.bufs, i)
+    local new_bufs = {}
+    for _, buf in ipairs(vim.t.bufs or {}) do
+        if buf ~= bufnr then
+            table.insert(new_bufs, buf)
         end
     end
+    vim.t.bufs = new_bufs
 end
 
 vim.cmd([[
