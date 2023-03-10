@@ -67,16 +67,6 @@ function colors.new_theme(theme)
     package.loaded["bufferline"] = nil
     package.loaded["heirline"] = nil
     require("omega.colors").compile_theme(theme)
-    local highlights_raw = vim.split(vim.api.nvim_exec("filter BufferLine hi", true), "\n")
-    local highlight_groups = {}
-    for _, raw_hi in ipairs(highlights_raw) do
-        table.insert(highlight_groups, string.match(raw_hi, "BufferLine%a+"))
-    end
-    for _, highlight in ipairs(highlight_groups) do
-        vim.cmd([[hi clear ]] .. highlight)
-    end
-    -- require("omega.modules.bufferline").config()
-    -- require("omega.modules.heirline").config()
     loadfile(vim.fn.stdpath("cache") .. "/omega/highlights")()
     vim.api.nvim_exec_autocmds("User", {
         pattern = "OmegaNewTheme",
