@@ -56,7 +56,7 @@ ls.add_snippets("tex", {
     }),
     s("beg", {
         t("\\begin{"),
-        i(1,"test"),
+        i(1,"env"),
         t({ "}", "" }),
         i(0),
         t({ "", "\\end{" }),
