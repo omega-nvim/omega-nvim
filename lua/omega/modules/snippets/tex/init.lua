@@ -31,6 +31,8 @@ local function reuse(idx)
     end, { idx })
 end
 
+require("omega.modules.snippets.tex.math")
+
 ls.add_snippets("tex", {
     s("sec", {
         t("\\section{"),
@@ -54,12 +56,11 @@ ls.add_snippets("tex", {
     }),
     s("beg", {
         t("\\begin{"),
-        i(1),
+        i(1,"test"),
         t({ "}", "" }),
         i(0),
         t({ "", "\\end{" }),
         reuse(1),
-
         t("}"),
     }),
 })
