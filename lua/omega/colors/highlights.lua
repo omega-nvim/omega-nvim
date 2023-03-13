@@ -2,6 +2,7 @@ local theme = require("omega.colors.themes." .. vim.g.colors_name)
 local colors = theme.colors
 local base16 = theme.base16
 local config = require("omega.custom.config")
+local color_utils = require("omega.utils.colors")
 colors.tele_bg = colors.telescope_bg or colors.darker_black
 colors.tele_prompt = colors.telescope_prompt or colors.black2
 
@@ -356,6 +357,7 @@ local highlights = {
 
 highlights["CmpItemAbbrMatch"] = { fg = colors.blue }
 highlights["CmpSource"] = { fg = colors.grey_fg }
+highlights["CmpSelected"] = { bg = color_utils.blend_colors(colors.blue, colors.darker_black, 0.3) }
 if config.ui.cmp.border == "half" then
     highlights["CmpBorder"] = { fg = colors.darker_black, bg = colors.black }
     highlights["Pmenu"] = { fg = colors.white, bg = colors.darker_black }
