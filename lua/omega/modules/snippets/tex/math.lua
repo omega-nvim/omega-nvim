@@ -25,6 +25,8 @@ local postfix = require("luasnip.extras.postfix").postfix
 local types = require("luasnip.util.types")
 local parse = require("luasnip.util.parser").parse_snippet
 
+local in_mathzone = require("omega.utils").in_mathzone
+
 local function reuse(idx)
     return f(function(args)
         return args[1][1]
@@ -77,5 +79,59 @@ ls.add_snippets("tex", {
                 t({ [[\end{pmatrix}]] }),
             }),
         }),
+    }, {
+        condition = function()
+            return in_mathzone()
+        end,
+    }),
+
+    s("bdm", {
+        t([=[{\boldmath{$]=]),
+        i(1),
+        t([[$}}]]),
+        i(0),
+    }),
+
+    s("RR", {
+        t([=[\mathbb{]=]),
+        i(i, "R"),
+        t([=[}]=]),
+        i(0),
+    }, {
+        condition = function()
+            return in_mathzone()
+        end,
+    }),
+
+    -- System of equations
+    s("==", {
+        t({ [=[\left[]=], "" }),
+        t({ [[\begin{aligned}]], "" }),
+        i(1),
+        t({ [[&=]] }),
+        i(2),
+        t({ [[\\]], "" }),
+        i(3),
+        t({ [[&=]] }),
+        i(4),
+        t({ "", [[\end{aligned}]], "" }),
+        t({ [=[\right]]=] }),
+    }),
+
+    s("<>", {
+        t([[\Longleftrightarrow]]),
+    }),
+
+    s("->", {
+        t([[\implies]]),
+    }),
+
+    s("frac", {
+        t([[\frac{]]),
+        i(1),
+        t("}"),
+        t("{"),
+        i(2),
+        t("}"),
     }),
 })

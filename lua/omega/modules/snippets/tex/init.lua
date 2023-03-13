@@ -33,34 +33,58 @@ end
 
 require("omega.modules.snippets.tex.math")
 
+local rec_ls
+rec_ls = function()
+    return sn(nil, {
+        c(1, {
+            -- important!! Having the sn(...) as the first choice will cause infinite recursion.
+            t({ "" }),
+            -- The same dynamicNode as in the snippet (also note: self reference).
+            sn(nil, { t({ "", "\t\\item " }), i(1), d(2, rec_ls, {}) }),
+        }),
+    })
+end
+
 ls.add_snippets("tex", {
     s("sec", {
         t("\\section{"),
         i(1),
         t("}"),
     }),
+
     s("ssec", {
         t("\\subsection{"),
         i(1),
         t("}"),
     }),
+
     s("sssec", {
         t("\\subsubsection{"),
         i(1),
         t("}"),
     }),
+
     s("para", {
         t("\\paragraph{"),
         i(1),
         t("}"),
     }),
+
     s("beg", {
         t("\\begin{"),
-        i(1,"env"),
+        i(1, "env"),
         t({ "}", "" }),
         i(0),
         t({ "", "\\end{" }),
         reuse(1),
         t("}"),
+    }),
+
+    s("ls", {
+        t({ "\\begin{itemize}", "\t\\item " }),
+        i(1),
+        d(2, rec_ls, {}),
+        t({ "", "\\end{itemize}" }),
+        i(0),
     }),
 })
