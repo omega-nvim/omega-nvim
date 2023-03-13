@@ -5,12 +5,16 @@ function colors.compile_theme(theme)
     vim.g.colors_name = theme
     package.loaded["omega.colors.highlights"] = nil
     local highlights = require("omega.colors.highlights")
+    local bg = require("omega.colors.themes." .. vim.g.colors_name).bg
     local lines = {
         string.format(
             [[
         require"omega.colors".compiled=string.dump(function()
+            vim.g.colors_name=nil
+            vim.opt.background="%s"
             vim.g.colors_name="%s"
             ]],
+            bg,
             vim.g.colors_name
         ),
     }
