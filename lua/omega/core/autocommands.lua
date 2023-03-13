@@ -164,3 +164,11 @@ autocmd("UIEnter", {
         _G.real_startuptime = tonumber(pnano[0].tv_sec) / 1e6 + tonumber(pnano[0].tv_nsec) / 1e6
     end,
 })
+
+autocmd("OptionSet", {
+    callback = function(data)
+        if data.match == "background" then
+            loadfile(vim.fn.stdpath("cache") .. "/omega/highlights")()
+        end
+    end,
+})
