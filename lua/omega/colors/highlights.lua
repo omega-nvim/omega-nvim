@@ -360,12 +360,12 @@ highlights["CmpSource"] = { fg = colors.grey_fg }
 highlights["CmpSelected"] = { bg = color_utils.blend_colors(colors.blue, colors.darker_black, 0.3) }
 if config.ui.cmp.border == "half" then
     highlights["CmpBorder"] = { fg = colors.darker_black, bg = colors.black }
-    highlights["Pmenu"] = { fg = colors.white, bg = colors.darker_black }
+    highlights["CmpNormal"] = { fg = colors.white, bg = colors.darker_black }
 elseif config.ui.cmp.border == "rounded" then
-    highlights["CmpBorder"] = { fg = colors.white, bg = colors.black }
-    highlights["Pmenu"] = { fg = colors.white, bg = colors.darker_black }
+    highlights["CmpNormal"] = { fg = colors.white, bg = colors.black }
+    highlights["CmpNormal"] = { fg = colors.white, bg = colors.darker_black }
 elseif config.ui.cmp.border == "none" then
-    highlights["Pmenu"] = { fg = colors.white, bg = colors.darker_black }
+    highlights["CmpNormal"] = { fg = colors.white, bg = colors.darker_black }
 end
 
 local kind_highlights = {
