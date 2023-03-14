@@ -44,6 +44,7 @@ local defaults = {
                     preloadFileSize = 1000,
                     library = {
                         vim.fn.stdpath("config") .. "/lua/omega/types",
+                        vim.fn.stdpath("config").."/lua"
                     },
                 },
             },
@@ -52,11 +53,10 @@ local defaults = {
 }
 defaults.neodev = {
     library = {
-        vimruntime = true,
+        runtime = true,
         types = true,
         plugins = {},
     },
-    runtime_path = true,
     lspconfig = defaults.lua_ls,
 }
 
