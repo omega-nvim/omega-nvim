@@ -6,7 +6,7 @@ local lsp = {
 lsp.dependencies = {
     {
         "folke/neodev.nvim",
-        config = function(opts)
+        config = function(_, opts)
             require("omega.modules.langs.lua").setup(opts)
         end,
     },
