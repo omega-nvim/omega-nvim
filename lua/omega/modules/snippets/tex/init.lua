@@ -78,6 +78,10 @@ ls.add_snippets("tex", {
         })
     ),
 
+    s("lt", { t([[\left]]) }),
+
+    s("rt", { t([[\right]]) }),
+
     s("env", {
         t("\\begin{"),
         i(1, "env"),
