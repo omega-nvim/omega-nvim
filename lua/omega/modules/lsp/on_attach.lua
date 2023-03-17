@@ -18,9 +18,23 @@ local function lsp_highlight_document(client, bufnr)
     end
 end
 
+local inlay_hints = {}
+
 function on_attach.setup(client, bufnr)
     if client.server_capabilities.codeActionProvider then
         require("omega.modules.lsp.available_code_action").setup(bufnr)
+    end
+    local inlay = require("omega.modules.lsp.inlay_hints")
+    local hints = inlay.new()
+    inlay.enable(hints)
+    inlay_hints.cache = function()
+        inlay.cache_render(hints, bufnr)
+    end
+    inlay_hints.render = function()
+        inlay.render(hints)
+    end
+    inlay_hints.disable = function()
+        inlay.disable(hints)
     end
     local opts = { noremap = true, silent = true, buffer = bufnr }
     vim.keymap.set("n", "g0", vim.lsp.buf.document_symbol, opts)
@@ -41,5 +55,7 @@ function on_attach.setup(client, bufnr)
     end, { desc = " Search Code Actions" })
     lsp_highlight_document(client, bufnr)
 end
+
+on_attach.inlay_hints = inlay_hints
 
 return on_attach

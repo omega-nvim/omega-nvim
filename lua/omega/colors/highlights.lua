@@ -353,6 +353,8 @@ local highlights = {
     TablineDuplicate = { fg = colors.light_grey, bg = colors.black2 },
     TablineTabSelected = { fg = colors.black2, bg = colors.nord_blue },
     TablineTabClose = { fg = colors.red, bg = colors.darker_black },
+
+    InlayHints = { fg = base16.base05 },
 }
 
 highlights["CmpItemAbbrMatch"] = { fg = colors.blue }
