@@ -70,7 +70,15 @@ ls.add_snippets("tex", {
         t("}"),
     }),
 
-    s("beg", {
+    s(
+        { trig = "hr", dscr = "Hyperref href" },
+        fmta([[\href{<>}{<>}]], {
+            i(1, "url"),
+            i(2, "display name"),
+        })
+    ),
+
+    s("env", {
         t("\\begin{"),
         i(1, "env"),
         t({ "}", "" }),

@@ -92,11 +92,56 @@ ls.add_snippets("tex", {
         i(0),
     }),
 
+    s("CC", {
+        t([=[\mathbb{C}]=]),
+    }, {
+        condition = function()
+            return in_mathzone()
+        end,
+    }),
+
+    s("II", {
+        t([=[\mathbb{I}]=]),
+    }, {
+        condition = function()
+            return in_mathzone()
+        end,
+    }),
+
+    s("NN", {
+        t([=[\mathbb{N}]=]),
+    }, {
+        condition = function()
+            return in_mathzone()
+        end,
+    }),
+
+    s("ZZ", {
+        t([=[\mathbb{Z}]=]),
+    }, {
+        condition = function()
+            return in_mathzone()
+        end,
+    }),
+
     s("RR", {
-        t([=[\mathbb{]=]),
-        i(i, "R"),
-        t([=[}]=]),
-        i(0),
+        t([=[\mathbb{R}]=]),
+    }, {
+        condition = function()
+            return in_mathzone()
+        end,
+    }),
+
+    s("fa", {
+        t([=[\forall]=]),
+    }, {
+        condition = function()
+            return in_mathzone()
+        end,
+    }),
+
+    s("te", {
+        t([=[\exists]=]),
     }, {
         condition = function()
             return in_mathzone()
@@ -125,18 +170,81 @@ ls.add_snippets("tex", {
     s("->", {
         t([[\implies]]),
     }),
+
     s("$$", {
         t({ [=[\[]=], "    " }),
         i(1),
         t({ "", [=[\]]=] }),
     }),
 
-    s("frac", {
-        t([[\frac{]]),
-        i(1),
-        t("}"),
-        t("{"),
-        i(2),
-        t("}"),
+    s("ff", fmta("\\frac{<>}{<>}", { i(1), i(2) }), {
+        condition = function()
+            return in_mathzone()
+        end,
+    }),
+
+    s("mm", fmta("$<>$", { i(1) })),
+
+    -- expand to _0 but not inside numbers
+    s(
+        { trig = "([%a%)%]%}])00", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+        fmta("<>_{<>}", {
+            f(function(_, snip)
+                return snip.captures[1]
+            end),
+            t("0"),
+        }),
+        {
+            condition = function()
+                return in_mathzone()
+            end,
+        }
+    ),
+    s({ trig = "df", snippetType = "autosnippet" }, { t("\\diff") }, {
+        condition = function()
+            return in_mathzone()
+        end,
+    }),
+
+    s(
+        "eq",
+        fmta(
+            [[
+        \begin{equation}
+            <>
+        \end{equation}
+        ]],
+            { i(1) }
+        )
+    ),
+
+    s("ee", fmta([[e^{<>}]], { i(1) }), {
+        condition = function()
+            return in_mathzone()
+        end,
+    }),
+
+    s({ trig = ";a", snippetType = "autosnippet" }, {
+        t("\\alpha"),
+    }, {
+        condition = function()
+            return in_mathzone()
+        end,
+    }),
+
+    s({ trig = ";b", snippetType = "autosnippet" }, {
+        t("\\beta"),
+    }, {
+        condition = function()
+            return in_mathzone()
+        end,
+    }),
+
+    s({ trig = ";g", snippetType = "autosnippet" }, {
+        t("\\gamma"),
+    }, {
+        condition = function()
+            return in_mathzone()
+        end,
     }),
 })
