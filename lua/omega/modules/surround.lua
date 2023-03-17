@@ -8,6 +8,14 @@ local surround = {
     end,
 }
 
+local get_input = function(prompt)
+    local ok, result = pcall(vim.fn.input, { prompt = prompt })
+    if not ok then
+        return nil
+    end
+    return result
+end
+
 surround.opts = {
     surrounds = {
         ["\\"] = {
