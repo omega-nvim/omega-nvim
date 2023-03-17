@@ -125,6 +125,9 @@ local function get_file_info(name, bufnr)
         devicons = require("nvim-web-devicons")
     end
     local icon, hl = devicons.get_icon(name, name:match("%a+$"), { default = true })
+    if name == " Quickfix " then
+        icon = " "
+    end
     local selected = api.nvim_get_current_buf() == bufnr
     local padding = string.rep(
         " ",
@@ -144,6 +147,7 @@ local function bufferlist()
     local buffers = ""
     for _, bufnr in ipairs(vim.t.bufs or {}) do
         local name = (#api.nvim_buf_get_name(bufnr) ~= 0) and fn.fnamemodify(api.nvim_buf_get_name(bufnr), ":t")
+            or vim.bo[bufnr].buftype == "quickfix" and " Quickfix "
             or " No Name "
         local close_button = "%" .. bufnr .. "@CloseBuffer@X%X "
         local selected = api.nvim_get_current_buf() == bufnr
