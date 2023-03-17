@@ -1,6 +1,7 @@
 local opt = vim.opt
 
 vim.g.mapleader = " "
+vim.g.maplocalleader = ","
 
 opt.undofile = true
 opt.undodir = vim.fn.expand("~") .. "/.vim/undodir"
