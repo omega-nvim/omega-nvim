@@ -71,8 +71,6 @@ map("n", "0", function()
     end
 end, { expr = true, desc = "Goto Beginning of text, then line" })
 
-map("i", " ", "<right>", { desc = "Move right" })
-
 map("n", ",,", function()
     require("omega.utils").append_comma()
 end, { desc = "Append comma" })
@@ -132,5 +130,3 @@ map("n", "k", [[(v:count > 1 ? "m'" . v:count : '') . 'k']], { expr = true, desc
 map("n", "<leader>vc", function()
     vim.cmd.ColorizerAttachToBuffer()
 end, { desc = " View Colors" })
-
-map("i", "<C-U>", "<ESC>b~hea", { silent = true })
