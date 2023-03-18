@@ -24,11 +24,12 @@ local snippets = {
     end,
 }
 
+
 function snippets.config(_, opts)
     require("luasnip").setup(opts)
-    local auto_expand = require("luasnip").auto_expand
-    require("luasnip").auto_expand = function(...)
-        vim.api.nvim_feedkeys("<c-g>u","i",true)
+    local auto_expand = require("luasnip").expand_auto
+    require("luasnip").expand_auto = function(...)
+        vim.o.undolevels = vim.o.undolevels
         auto_expand(...)
     end
     require("omega.modules.snippets.lua")
