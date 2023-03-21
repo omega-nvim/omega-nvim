@@ -29,7 +29,7 @@ function snippets.config(_, opts)
     require("luasnip").setup(opts)
     local snip_expand = require("luasnip").snip_expand
     require("luasnip").snip_expand = function(...)
-        vim.o.undolevels = vim.o.undolevels
+        vim.o.ul = vim.o.ul
         snip_expand(...)
     end
     require("omega.modules.snippets.lua")

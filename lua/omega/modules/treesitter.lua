@@ -14,6 +14,7 @@ treesitter.opts = {
     ensure_installed = { "lua", "rust", "query" },
     highlight = {
         enable = true,
+        disable = { "latex" },
     },
     incremental_selection = {
         enable = true,
