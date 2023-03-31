@@ -11,6 +11,7 @@ vim.api.nvim_create_autocmd("InsertCharPre", {
                 pcall(vim.keymap.del, "i", "<tab>")
                 vim.api.nvim_input("<bs>")
                 vim.defer_fn(function()
+                    vim.o.ul = vim.o.ul
                     require("luasnip").expand_or_jump()
                 end, 1)
             end)
