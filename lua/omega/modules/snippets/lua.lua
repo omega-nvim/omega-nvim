@@ -108,4 +108,14 @@ ls.add_snippets("lua", {
         reuse(1),
         t(")"),
     }),
+
+    s(
+        "M",
+        fmta(
+            [[local <> = {}
+<>
+return <>]],
+            { i(1, "M"),i(2), reuse(1) }
+        )
+    ),
 })

@@ -70,6 +70,13 @@ ls.add_snippets("tex", {
         t("}"),
     }),
 
+    s("bd", {
+        t("\\textbf{"),
+        i(1),
+        t("}"),
+    }),
+
+
     s(
         { trig = "hr", dscr = "Hyperref href" },
         fmta([[\href{<>}{<>}]], {
