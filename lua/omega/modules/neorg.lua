@@ -5,7 +5,7 @@ local neorg_mod = {
     opts = {
         load = {
             ["core.defaults"] = {},
-            ["core.norg.concealer"] = {
+            ["core.concealer"] = {
                 config = {
                     icon_preset = "diamond",
                 },
@@ -16,7 +16,7 @@ local neorg_mod = {
                     neorg_leader = ",",
                 },
             },
-            ["core.norg.dirman"] = {
+            ["core.dirman"] = {
                 config = {
                     workspaces = {
                         notes = "~/notes",
@@ -24,7 +24,7 @@ local neorg_mod = {
                     default_workspace = "notes",
                 },
             },
-            ["core.norg.journal"] = {
+            ["core.journal"] = {
                 config = {
                     workspace = "notes",
                     journal_folder = "journal",
@@ -54,7 +54,7 @@ function neorg_mod.config(_, opts)
         if ok then
             local cmp_opts =
                 require("lazy.core.plugin").values(require("lazy.core.config").plugins["nvim-cmp"], "opts", false)
-            local mod_ok = pcall(neorg.modules.load_module, "core.norg.completion", nil, {
+            local mod_ok = pcall(neorg.modules.load_module, "core.completion", nil, {
                 engine = "nvim-cmp",
             })
             if mod_ok then
