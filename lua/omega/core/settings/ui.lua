@@ -13,6 +13,7 @@ opt.tabline = "%!v:lua.require('omega.modules.ui.tabline').run()"
 opt.showtabline = 1
 
 vim.defer_fn(function()
+    -- TODO: move this into compiled code
     local base16 = require("omega.colors.themes." .. vim.g.colors_name).base16
     local colors = require("omega.colors.themes." .. vim.g.colors_name).colors
     g.terminal_color_0 = base16.base01

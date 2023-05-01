@@ -49,6 +49,7 @@ local neorg_mod = {
 
 function neorg_mod.config(_, opts)
     require("neorg").setup(opts)
+    vim.api.nvim_exec_autocmds("BufRead", {})
     vim.defer_fn(function()
         local ok, cmp = pcall(require, "cmp")
         if ok then
