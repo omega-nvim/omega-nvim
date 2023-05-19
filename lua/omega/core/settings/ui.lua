@@ -42,13 +42,13 @@ vim.defer_fn(function()
     opt.splitkeep = "screen"
     opt.fillchars = {
         eob = " ",
-        vert = "║",
-        horiz = "═",
-        horizup = "╩",
-        horizdown = "╦",
-        vertleft = "╣",
-        vertright = "╠",
-        verthoriz = "╬",
+        vert = "┃", -- ║
+        horiz = "━", -- ═
+        horizup = "┻", -- ╩
+        horizdown = "┳", -- ╦
+        vertleft = "┫", -- ╣
+        vertright = "┣", -- ╠
+        verthoriz = "╋", -- ╬
     }
     opt.laststatus = 3
     opt.splitbelow = true
