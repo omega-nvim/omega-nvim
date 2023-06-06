@@ -132,3 +132,7 @@ map("n", "k", [[(v:count > 1 ? "m'" . v:count : '') . 'k']], { expr = true, desc
 map("n", "<leader>vc", function()
     vim.cmd.ColorizerAttachToBuffer()
 end, { desc = " View Colors" })
+
+map("n", "<leader>a", function()
+    require("neogen").generate({ snippet_engine = "luasnip" })
+end, { desc = "﨧Annotations" })
