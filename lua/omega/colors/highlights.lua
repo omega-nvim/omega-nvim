@@ -355,6 +355,14 @@ local highlights = {
     TablineTabClose = { fg = colors.red, bg = colors.darker_black },
 
     InlayHints = { fg = base16.base05 },
+
+    ["@lsp.type.class"] = { link = "Structure" },
+    ["@lsp.type.comment"] = { link = "@comment" },
+    ["@lsp.type.variable"] = { link = "@variable" },
+    ["@lsp.type.method"] = { link = "@function.call" },
+    ["@lsp.typemod.function.public"] = { link = "@function.call" },
+    ["@lsp.type.macro"] = { link = "@function.macro" },
+    ["@lsp.type.namespace"] = { link = "@namespace" },
 }
 
 highlights["CmpItemAbbrMatch"] = { fg = colors.blue }
@@ -424,6 +432,7 @@ for i = 1, 6 do
     highlights["@neorg.todo_items.urgent." .. i] = { fg = base16.base0F }
     highlights["@neorg.todo_items.on_hold." .. i] = { fg = base16.base0D }
 end
+highlights["@neorg.todo_items.on_hold"] = { fg = base16.base0D }
 
 highlights.TelescopeSelectionCaret = { fg = colors.blue, bg = colors.light_grey }
 highlights.TelescopeSelection = { fg = colors.blue, bg = colors.light_grey }
