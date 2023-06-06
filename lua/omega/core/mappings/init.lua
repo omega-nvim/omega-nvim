@@ -5,6 +5,8 @@ require("omega.core.mappings.telescope")
 
 local map = vim.keymap.set
 
+map("i", "<m-cr>", "<cr>", { desc = "Return" })
+
 map({ "v", "n" }, "<leader>y", '"+y', { silent = true, desc = " Yank to clipboard" })
 
 map("n", "<esc>", function()
