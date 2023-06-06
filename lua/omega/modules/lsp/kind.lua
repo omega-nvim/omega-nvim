@@ -85,11 +85,8 @@ function lspkind.init(opts)
     local preset = opt_preset(opts)
 
     local symbol_map = kind_presets[preset]
-    lspkind.symbol_map = (
-        opts
-        and opts["symbol_map"]
-        and vim.tbl_extend("force", symbol_map, opts["symbol_map"])
-    ) or symbol_map
+    lspkind.symbol_map = (opts and opts["symbol_map"] and vim.tbl_extend("force", symbol_map, opts["symbol_map"]))
+        or symbol_map
 
     local symbols = {}
     local len = kind_len

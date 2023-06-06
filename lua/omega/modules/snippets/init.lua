@@ -24,7 +24,6 @@ local snippets = {
     end,
 }
 
-
 function snippets.config(_, opts)
     require("luasnip").setup(opts)
     local snip_expand = require("luasnip").snip_expand

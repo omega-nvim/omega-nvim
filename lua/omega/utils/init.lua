@@ -123,12 +123,7 @@ function utils.in_mathzone()
             return
         end
 
-        return root:named_descendant_for_range(
-            cursor_range[1],
-            cursor_range[2],
-            cursor_range[1],
-            cursor_range[2]
-        )
+        return root:named_descendant_for_range(cursor_range[1], cursor_range[2], cursor_range[1], cursor_range[2])
     end
 
     if has_treesitter then
@@ -145,11 +140,7 @@ function utils.in_mathzone()
                 local begin = node:child(0)
                 local names = begin and begin:field("name")
 
-                if
-                    names
-                    and names[1]
-                    and MATH_ENVIRONMENTS[query.get_node_text(names[1], buf):gsub("[%s*]", "")]
-                then
+                if names and names[1] and MATH_ENVIRONMENTS[query.get_node_text(names[1], buf):gsub("[%s*]", "")] then
                     return true
                 end
             end

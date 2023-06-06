@@ -20,20 +20,8 @@ local function view_highlights()
         local hlgroup = string.match(v, "([^ ]*)%s+.*")
         pcall(vim.api.nvim_buf_add_highlight, bufnr, 0, hlgroup, k - 1, startPos, endPos)
     end
-    vim.api.nvim_buf_set_keymap(
-        bufnr,
-        "n",
-        "q",
-        "<cmd>q<CR>",
-        { noremap = true, silent = true, nowait = true }
-    )
-    vim.api.nvim_buf_set_keymap(
-        bufnr,
-        "n",
-        "<ESC>",
-        "<cmd>q<CR>",
-        { noremap = true, silent = true, nowait = true }
-    )
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "q", "<cmd>q<CR>", { noremap = true, silent = true, nowait = true })
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<ESC>", "<cmd>q<CR>", { noremap = true, silent = true, nowait = true })
     local width = vim.api.nvim_win_get_width(0)
     local height = vim.api.nvim_win_get_height(0)
     local win = vim.api.nvim_open_win(bufnr, true, {

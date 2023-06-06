@@ -44,7 +44,7 @@ local defaults = {
                     preloadFileSize = 1000,
                     library = {
                         vim.fn.stdpath("config") .. "/lua/omega/types",
-                        vim.fn.stdpath("config").."/lua"
+                        vim.fn.stdpath("config") .. "/lua",
                     },
                 },
             },

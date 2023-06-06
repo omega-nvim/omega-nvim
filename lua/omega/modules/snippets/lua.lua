@@ -115,7 +115,7 @@ ls.add_snippets("lua", {
             [[local <> = {}
 <>
 return <>]],
-            { i(1, "M"),i(2), reuse(1) }
+            { i(1, "M"), i(2), reuse(1) }
         )
     ),
 })

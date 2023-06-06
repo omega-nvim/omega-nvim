@@ -4,7 +4,7 @@ local autopairs = {
     opts = { ignored_next_char = "", disable_filetype = { "norg" } },
 }
 
-autopairs.config = function(_,opts)
+autopairs.config = function(_, opts)
     local Rule = require("nvim-autopairs.rule")
     local npairs = require("nvim-autopairs")
     require("nvim-autopairs").setup(opts)
