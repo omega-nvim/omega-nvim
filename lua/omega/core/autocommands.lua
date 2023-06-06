@@ -173,6 +173,17 @@ autocmd("OptionSet", {
     end,
 })
 
+autocmd("FileType", {
     callback = function()
+        vim.opt.formatoptions = vim.opt.formatoptions
+            + "r" -- continue comments after return
+            + "c" -- wrap comments using textwidth
+            + "q" -- allow to format comments w/ gq
+            + "j" -- remove comment leader when joining lines when possible
+            - "t" -- don't autoformat
+            - "a" -- no autoformatting
+            - "o" -- don't continue comments after o/O
+            - "2" -- don't use indent of second line for rest of paragraph
     end,
+    desc = "Set formatoptions",
 })
