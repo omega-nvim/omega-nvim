@@ -30,3 +30,22 @@ end, { desc = "View Colors", nargs = 0 })
 vim.api.nvim_create_user_command("ViewHighlights", function()
     require("omega.colors.extras.highlight_viewer")()
 end, { desc = "View Highlights", nargs = 0 })
+
+vim.api.nvim_create_user_command("ViewNorgSpec", function()
+    if vim.loop.fs_stat("./specs.norg") then
+        vim.fn.delete("./specs.norg")
+    end
+    vim.fn.system({
+        "curl",
+        "https://raw.githubusercontent.com/nvim-neorg/norg-specs/main/1.0-specification.norg",
+        "-o",
+        "./specs.norg",
+    })
+    vim.cmd.e("./specs.norg")
+    vim.keymap.set("n", "q", function()
+        vim.cmd.bdelete()
+        if vim.loop.fs_stat("./specs.norg") then
+            vim.fn.delete("./specs.norg")
+        end
+    end, { buffer = true })
+end, { desc = "View Norg Specification" })
