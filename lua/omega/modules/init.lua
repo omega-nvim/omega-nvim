@@ -5,6 +5,16 @@ return {
     { "nvim-lua/plenary.nvim" },
     { "max397574/omega-themes", lazy = true },
     {
+        "rktjmp/paperplanes.nvim",
+        cmd = { "PP" },
+        config = function()
+            require("paperplanes").setup({
+                register = "+",
+                provider = "0x0.st",
+            })
+        end,
+    },
+    {
         "xiyaowong/nvim-colorizer.lua",
         cmd = { "ColorizerAttachToBuffer" },
         config = function()
