@@ -250,7 +250,7 @@ function cmp_module.config(_, opts)
         cmp.setup(opts)
         return
     end
-    local ok = pcall(neorg.modules.load_module, "core.completion", nil, {
+    local ok = pcall(neorg.modules.load_module, "core.completion", {
         engine = "nvim-cmp",
     })
     if ok then
