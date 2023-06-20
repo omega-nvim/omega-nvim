@@ -136,3 +136,6 @@ end, { desc = " View Colors" })
 map("n", "<leader>a", function()
     require("neogen").generate({ snippet_engine = "luasnip" })
 end, { desc = "﨧Annotations" })
+
+map("v", ">", ">gv")
+map("v", "<", "<gv")
