@@ -24,9 +24,6 @@ local settings = vim.tbl_deep_extend("force", {
                 vim.pretty_print(plugin)
             end,
         },
-        icons = {
-            lazy = "鈴",
-        },
     },
     diff = {
         cmd = "git",

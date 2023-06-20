@@ -363,6 +363,10 @@ local highlights = {
     ["@lsp.typemod.function.public"] = { link = "@function.call" },
     ["@lsp.type.macro"] = { link = "@function.macro" },
     ["@lsp.type.namespace"] = { link = "@namespace" },
+
+    WhichKeyDesc = { fg = base16.base08 },
+    WhichKeyFloat = { fg = base16.base08 },
+    WhichKeyGroup = { fg = base16.base0E },
 }
 
 highlights["CmpItemAbbrMatch"] = { fg = colors.blue }

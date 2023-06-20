@@ -80,7 +80,7 @@ toggleterm.init = function()
     vim.defer_fn(function()
         vim.keymap.set("n", "<leader>r", function()
             run_file()
-        end, { noremap = true })
+        end, { desc = " Run File" })
         vim.keymap.set("n", "<c-t>", function()
             require("toggleterm.terminal").Terminal:new({ close_on_exit = true }):toggle()
         end, {

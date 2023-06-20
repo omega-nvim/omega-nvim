@@ -14,6 +14,7 @@
   "neodev.nvim": { "branch": "main", "commit": "78f1c370173e7689bd58d64229b4d92c5dfb2793" },
   "neogen": { "branch": "main", "commit": "1dd0319ccf41b2498f45a3c7607f2ee325ffc6a0" },
   "neorg": { "branch": "main", "commit": "9a55117b6175e63d86346bb893392cdf0b6ad2cc" },
+  "nerdicons.nvim": { "branch": "main", "commit": "6dfb8abaf278f6075605902f5e79b8fef9403b3b" },
   "noice.nvim": { "branch": "main", "commit": "39461475d9de676bccc338876689c9e5b44bc932" },
   "nui.nvim": { "branch": "main", "commit": "d146966a423e60699b084eeb28489fe3b6427599" },
   "nvim-autopairs": { "branch": "master", "commit": "e8f7dd7a72de3e7b6626c050a802000e69d53ff0" },
@@ -34,5 +35,6 @@
   "telescope-undo.nvim": { "branch": "main", "commit": "3dec002ea3e7952071d26fbb5d01e2038a58a554" },
   "telescope.nvim": { "branch": "master", "commit": "00cf15074a2997487813672a75f946d2ead95eb0" },
   "toggleterm.nvim": { "branch": "main", "commit": "cf146a267a6a7db62b1e2aff40414b20081048a1" },
-  "vimtex": { "branch": "master", "commit": "28c71043604271d37be9582c89128d2acedff065" }
+  "vimtex": { "branch": "master", "commit": "28c71043604271d37be9582c89128d2acedff065" },
+  "which-key.nvim": { "branch": "main", "commit": "d871f2b664afd5aed3dc1d1573bef2fb24ce0484" }
 }
