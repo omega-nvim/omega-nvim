@@ -14,6 +14,7 @@ lsp.dependencies = {
 
 function lsp.config()
     require("omega.modules.langs.rust")
+
     vim.api.nvim_set_hl(0, "DiagnosticHeader", { link = "Special" })
     local utils = require("omega.utils")
 
