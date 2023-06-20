@@ -5,6 +5,11 @@ return {
     { "nvim-lua/plenary.nvim" },
     { "max397574/omega-themes", lazy = true },
     {
+        "glepnir/nerdicons.nvim",
+        cmd = "NerdIcons",
+        opts = {},
+    },
+    {
         "rktjmp/paperplanes.nvim",
         cmd = { "PP" },
         config = function()
