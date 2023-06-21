@@ -40,6 +40,12 @@ function which_key.config()
         i = {
             name = " Insert",
         },
+        x = {
+            name = " Errors",
+        },
+        T = {
+            name = " Todo",
+        },
     }, { prefix = "<leader>" })
 end
 
