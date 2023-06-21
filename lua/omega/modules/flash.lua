@@ -104,12 +104,51 @@ vim.keymap.set("o", "<c-w>", function()
     end)
 end)
 
+-- TODO: jump to next one after first selection
+local function lsp_references()
+    local params = vim.lsp.util.make_position_params()
+    params.context = {
+        includeDeclaration = true,
+    }
+    local first = true
+    local bufnr = vim.api.nvim_get_current_buf()
+    vim.lsp.buf_request(bufnr, "textDocument/references", params, function(_, result, ctx)
+        if not vim.tbl_islist(result) then
+            result = { result }
+        end
+        if first and result ~= nil and not vim.tbl_isempty(result) then
+            first = false
+        else
+            return
+        end
+        require("flash").jump({
+            mode = "references",
+            matcher = function(win)
+                local oe = vim.lsp.get_client_by_id(ctx.client_id).offset_encoding
+                return vim.tbl_map(function(loc)
+                    return {
+                        pos = { loc.lnum, loc.col - 1 },
+                        end_pos = { loc.end_lnum or loc.lnum, (loc.end_col or loc.col) - 1 },
+                    }
+                end, vim.lsp.util.locations_to_items(result, oe))
+            end,
+        })
+    end)
+end
+
 flash.keys = {
     {
         "s",
         mode = { "n", "x", "o" },
         function()
             require("flash").jump()
+        end,
+    },
+    {
+        "gR",
+        mode = { "n" },
+        function()
+            lsp_references()
         end,
     },
     {
