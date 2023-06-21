@@ -9,20 +9,11 @@ function noice.config()
     vim.o.lazyredraw = false
     local settings = {
         cmdline = {
-            ---@type table<string, CmdlineFormat>
-            format = {
-                inspect = {
-                    conceal = true,
-                    icon = " ",
-                    lang = "lua",
-                    pattern = "^:%s*lua =%s*",
-                },
-            },
             view = "cmdline",
         },
         lsp = {
             progress = {
-                enabled = false,
+                enabled = true,
             },
             override = {
                 -- override the default lsp markdown formatter with Noice

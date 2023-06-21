@@ -26,7 +26,7 @@ function heirline.config()
             components.file_name,
             align,
             components.diagnostics,
-            components.lsp_progress,
+            -- components.lsp_progress,
             align,
             components.coords,
             space(2),
