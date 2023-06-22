@@ -48,25 +48,30 @@ end
 
 local function jump_lines()
     require("flash").jump({
-        search = { multi_window = true, wrap = true },
-        highlight = { backdrop = true, label = { current = true } },
-        matcher = function()
-            local results = {}
-            for i = vim.fn.line("w0"), vim.fn.line("w$") do
-                table.insert(results, {
-                    pos = { i, 1 },
-                    end_pos = { i, 0 },
-                })
-            end
-            return results
-        end,
-        action = function(match, _)
-            vim.api.nvim_set_current_win(match.win)
-            vim.api.nvim_win_call(match.win, function()
-                vim.api.nvim_win_set_cursor(match.win, { match.pos[1], 0 })
-            end)
-        end,
+        search = { mode = "search" },
+        highlight = { label = { after = { 0, 0 }, before = false } },
+        pattern = "^",
     })
+    -- require("flash").jump({
+    --     search = { multi_window = true, wrap = true },
+    --     highlight = { backdrop = true, label = { current = true } },
+    --     matcher = function()
+    --         local results = {}
+    --         for i = vim.fn.line("w0"), vim.fn.line("w$") do
+    --             table.insert(results, {
+    --                 pos = { i, 1 },
+    --                 end_pos = { i, 0 },
+    --             })
+    --         end
+    --         return results
+    --     end,
+    --     action = function(match, _)
+    --         vim.api.nvim_set_current_win(match.win)
+    --         vim.api.nvim_win_call(match.win, function()
+    --             vim.api.nvim_win_set_cursor(match.win, { match.pos[1], 0 })
+    --         end)
+    --     end,
+    -- })
 end
 
 vim.keymap.set("o", "<c-w>", function()
