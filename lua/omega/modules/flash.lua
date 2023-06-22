@@ -25,6 +25,14 @@ local flash = {
     },
 }
 
+function flash.config(_, opts)
+    require("flash").setup(opts)
+    vim.keymap.del("o", "f")
+    vim.keymap.del("o", "F")
+    vim.keymap.del("o", ";")
+    vim.keymap.del("o", ",")
+end
+
 local function get_windows()
     local wins = vim.api.nvim_tabpage_list_wins(0)
     local curr_win = vim.api.nvim_get_current_win()
