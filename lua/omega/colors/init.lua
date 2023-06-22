@@ -68,8 +68,10 @@ function colors.new_theme(theme)
     package.loaded["omega.colors.highlights"] = nil
     package.loaded["omega.colors.custom"] = nil
     package.loaded["omega.custom.config"] = nil
-    package.loaded["bufferline"] = nil
     package.loaded["heirline"] = nil
+    package.loaded["omega.modules.heirline"] = nil
+    package.loaded["omega.modules.heirline.components"] = nil
+    require("omega.modules.heirline").config()
     require("omega.colors").compile_theme(theme)
     loadfile(vim.fn.stdpath("cache") .. "/omega/highlights")()
     vim.api.nvim_exec_autocmds("User", {
