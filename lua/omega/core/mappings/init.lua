@@ -139,3 +139,7 @@ end, { desc = "﨧Annotations" })
 
 map("v", ">", ">gv")
 map("v", "<", "<gv")
+
+map("n", "<C-f>", function()
+    vim.cmd(":vert :h " .. vim.fn.expand("<cword>"))
+end, { noremap = true, silent = true, desc = "Open helpfile of word under cursor" })
