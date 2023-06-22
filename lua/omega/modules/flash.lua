@@ -4,6 +4,10 @@ local flash = {
         jump = {
             autojump = true,
         },
+        search = {
+            incremental = true,
+            trigger = ";",
+        },
         highlight = {
             label = {
                 current = true,
@@ -74,9 +78,9 @@ local function jump_lines()
     -- })
 end
 
-vim.keymap.set("o", "<c-w>", function()
+vim.keymap.set("o", "r", function()
     local operator = vim.v.operator
-    local register = vim.v.register
+    local register = vim--[[  ]].v.register
     vim.api.nvim_feedkeys(vim.keycode("<esc>"), "o", true)
     vim.schedule(function()
         require("flash").jump({
@@ -92,12 +96,12 @@ vim.keymap.set("o", "<c-w>", function()
                     vim.api.nvim_win_set_cursor(0, { start[1], start[2] })
                     vim.cmd("normal! o")
                     vim.api.nvim_win_set_cursor(0, { finish[1], finish[2] })
+                    vim.go.operatorfunc = op_func
                     vim.api.nvim_input('"' .. register .. operator)
 
                     vim.schedule(function()
                         vim.api.nvim_set_current_win(state.win)
                         vim.fn.winrestview(saved_view)
-                        vim.go.operatorfunc = op_func
                     end)
 
                     _G.flash_op = nil
@@ -128,7 +132,7 @@ local function lsp_references()
         end
         require("flash").jump({
             mode = "references",
-            matcher = function(win)
+            matcher = function()
                 local oe = vim.lsp.get_client_by_id(ctx.client_id).offset_encoding
                 return vim.tbl_map(function(loc)
                     return {
@@ -142,6 +146,7 @@ local function lsp_references()
 end
 
 flash.keys = {
+    "/",
     {
         "s",
         mode = { "n", "x", "o" },
