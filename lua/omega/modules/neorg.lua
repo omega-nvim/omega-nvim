@@ -8,6 +8,13 @@ local neorg_mod = {
             ["core.concealer"] = {
                 config = {
                     icon_preset = "diamond",
+                    icons = {
+                        todo = {
+                            urgent = {
+                                icon = "󱈸",
+                            },
+                        },
+                    },
                 },
             },
             ["core.keybinds"] = {
