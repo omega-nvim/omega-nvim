@@ -22,6 +22,12 @@ autocmd({ "BufAdd", "BufEnter", "tabnew" }, {
     end,
 })
 
+autocmd("BufEnter", {
+    callback = function(data)
+        require("omega.extras.highlight_undo").setup(data.buf)
+    end,
+})
+
 autocmd("BufDelete", {
     callback = function(args)
         for _, tab in ipairs(vim.api.nvim_list_tabpages()) do
