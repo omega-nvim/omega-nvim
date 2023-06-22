@@ -1,5 +1,6 @@
 local trouble = {
     "folke/trouble.nvim",
+    cmd = { "Trouble" },
 }
 
 trouble.keys = {
