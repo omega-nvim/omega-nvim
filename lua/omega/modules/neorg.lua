@@ -10,8 +10,23 @@ local neorg_mod = {
                     icon_preset = "diamond",
                     icons = {
                         todo = {
+                            done = {
+                                icon = "󰸞",
+                            },
+                            on_hold = {
+                                icon = "󰏤",
+                            },
                             urgent = {
                                 icon = "󱈸",
+                            },
+                            uncertain = {
+                                icon = "",
+                            },
+                            recurring = {
+                                icon = "",
+                            },
+                            pending = {
+                                icon = "",
                             },
                         },
                     },
