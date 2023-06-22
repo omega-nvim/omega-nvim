@@ -1,12 +1,19 @@
 local flash = {
     "folke/flash.nvim",
     opts = {
+        char = {
+            keys = { "f", "F", ";", "," },
+        },
         jump = {
             autojump = true,
         },
-        search = {
-            incremental = true,
-            trigger = ";",
+        modes = {
+            search = {
+                search = {
+                    incremental = true,
+                    trigger = ";",
+                },
+            },
         },
         highlight = {
             label = {
