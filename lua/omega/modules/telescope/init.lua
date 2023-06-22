@@ -145,6 +145,17 @@ telescope.opts = {
     },
 }
 
+telescope.keys = {
+    {
+        "<leader>sh",
+        mode = { "n" },
+        function()
+            require("telescope.builtin").highlights()
+        end,
+        { desc = " Search Highlights" },
+    },
+}
+
 function telescope.config(_, opts)
     require("lazy").load({ plugins = { "telescope-fzf-native.nvim" } })
 
