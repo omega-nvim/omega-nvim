@@ -354,6 +354,10 @@ local highlights = {
     TablineTabSelected = { fg = colors.black2, bg = colors.nord_blue },
     TablineTabClose = { fg = colors.red, bg = colors.darker_black },
 
+    FlashMatch = { fg = "#7DB000" },
+    FlashLabel = { bg = "#FF6000", fg = "#1e222a" },
+    FlashCurrent = { link = "IncSearch" },
+
     InlayHints = { fg = base16.base05 },
 
     ["@lsp.type.class"] = { link = "Structure" },
@@ -432,11 +436,14 @@ elseif config.ui.cmp.icons == "fg_colored" then
         }
     end
 end
-for i = 1, 6 do
-    highlights["@neorg.todo_items.urgent." .. i] = { fg = base16.base0F }
-    highlights["@neorg.todo_items.on_hold." .. i] = { fg = base16.base0D }
-end
-highlights["@neorg.todo_items.on_hold"] = { fg = base16.base0D }
+highlights["@neorg.todo_items.urgent.norg"] = { fg = colors.orange }
+highlights["@neorg.todo_items.undone.norg"] = { fg = colors.red }
+highlights["@neorg.todo_items.done.norg"] = { fg = colors.green }
+highlights["@neorg.todo_items.on_hold.norg"] = { fg = colors.grey }
+highlights["@neorg.todo_items.cancelled.norg"] = { fg = colors.grey_fg }
+highlights["@neorg.todo_items.uncertain.norg"] = { fg = colors.purple }
+highlights["@neorg.todo_items.recurring.norg"] = { fg = colors.yellow }
+highlights["@neorg.todo_items.pending.norg"] = { fg = colors.blue }
 
 highlights.TelescopeSelectionCaret = { fg = colors.blue, bg = colors.light_grey }
 highlights.TelescopeSelection = { fg = colors.blue, bg = colors.light_grey }
