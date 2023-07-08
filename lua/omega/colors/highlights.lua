@@ -361,6 +361,10 @@ local highlights = {
     InlayHints = { fg = base16.base05 },
 
     ["@lsp.type.class"] = { link = "Structure" },
+    ["@lsp.type.function"] = { fg = base16.base0D },
+    ["@lsp.typemod.variable.declaration"] = { fg = base16.base05, italic = false },
+
+    ["@lsp.mod.declaration"] = { link = "@function" },
     ["@lsp.type.comment"] = { link = "@comment" },
     ["@lsp.type.variable"] = { link = "@variable" },
     ["@lsp.type.method"] = { link = "@function.call" },
