@@ -15,12 +15,10 @@ local flash = {
                 },
             },
         },
-        highlight = {
-            label = {
-                current = true,
-                before = true,
-                after = false,
-            },
+        label = {
+            current = true,
+            before = true,
+            after = false,
         },
     },
 }
