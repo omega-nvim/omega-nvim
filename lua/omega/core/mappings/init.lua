@@ -1,7 +1,6 @@
 require("omega.core.mappings.completion")
 require("omega.core.mappings.insert_mode")
 require("omega.core.mappings.tabline")
-require("omega.core.mappings.telescope")
 
 local map = vim.keymap.set
 
