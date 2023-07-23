@@ -3,7 +3,7 @@ return {
     { "rcarriga/nvim-notify" },
     { "MunifTanjim/nui.nvim" },
     { "nvim-lua/plenary.nvim" },
-    { "max397574/omega-themes"},
+    { "max397574/omega-themes" },
     {
         "glepnir/nerdicons.nvim",
         cmd = "NerdIcons",
@@ -31,6 +31,15 @@ return {
             })
             vim.cmd.ColorizerAttachToBuffer()
         end,
+        keys = {
+            {
+                "<leader>vc",
+                function()
+                    vim.cmd.ColorizerAttachToBuffer()
+                end,
+                desc = " View Colors",
+            },
+        },
     },
     {
         "max397574/better-escape.nvim",

@@ -128,14 +128,6 @@ end, { desc = " Quickfix Open" })
 map("n", "j", [[(v:count > 1 ? "m'" . v:count : '') . 'j']], { expr = true, desc = "Add j with count to jumplist" })
 map("n", "k", [[(v:count > 1 ? "m'" . v:count : '') . 'k']], { expr = true, desc = "Add k with count to jumplist" })
 
-map("n", "<leader>vc", function()
-    vim.cmd.ColorizerAttachToBuffer()
-end, { desc = " View Colors" })
-
-map("n", "<leader>a", function()
-    require("neogen").generate({ snippet_engine = "luasnip" })
-end, { desc = "﨧Annotations" })
-
 map("v", ">", ">gv")
 map("v", "<", "<gv")
 
