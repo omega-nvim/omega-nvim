@@ -77,7 +77,8 @@ function neorg_mod.config(_, opts)
         if ok then
             local cmp_opts =
                 require("lazy.core.plugin").values(require("lazy.core.config").plugins["nvim-cmp"], "opts", false)
-            local mod_ok = pcall(neorg.modules.load_module, "core.completion", nil, {
+            local neorg = require("neorg.core")
+            local mod_ok = pcall(neorg.modules.load_module, "core.completion", {
                 engine = "nvim-cmp",
             })
             if mod_ok then
