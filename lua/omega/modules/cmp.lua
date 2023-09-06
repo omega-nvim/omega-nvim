@@ -250,6 +250,7 @@ function cmp_module.config(_, opts)
         cmp.setup(opts)
         return
     end
+    local neorg = require("neorg.core")
     local ok = pcall(neorg.modules.load_module, "core.completion", {
         engine = "nvim-cmp",
     })
