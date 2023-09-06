@@ -7,9 +7,9 @@ opt.undofile = true
 opt.undodir = vim.fn.expand("~") .. "/.vim/undodir"
 opt.scrolloff = 3 -- start scrolling 3 lines away from top/bottom
 require("omega.core.settings.ui")
+opt.shiftwidth = 4
 vim.defer_fn(function()
     opt.timeoutlen = 300
-    opt.shiftwidth = 4
     opt.guifont = "Operator Mono Lig"
     opt.mouse = "nv"
     opt.ignorecase = true
