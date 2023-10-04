@@ -199,7 +199,7 @@ local highlights = {
     Red = { fg = colors.red },
     Green = { fg = colors.green },
     EndOfBuffer = { fg = colors.black },
-    NormalFloat = {},
+    NormalFloat = { bg = colors.darker_black },
 
     DiagnosticWarn = { fg = colors.orange },
     DiagnosticError = { fg = colors.red },
@@ -373,8 +373,9 @@ local highlights = {
     ["@lsp.type.namespace"] = { link = "@namespace" },
 
     WhichKeyDesc = { fg = base16.base08 },
-    WhichKeyFloat = { fg = base16.base08 },
-    WhichKeyGroup = { fg = base16.base0E },
+    WhichKeyFloat = { fg = base16.base08, bg = colors.darker_black },
+    WhichKeySeparator = { fg = base16.base08, bg = colors.darker_black },
+    WhichKeyGroup = { fg = base16.base0D },
 }
 
 highlights["CmpItemAbbrMatch"] = { fg = colors.blue }

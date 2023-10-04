@@ -7,12 +7,16 @@ local which_key = {
 function which_key.config()
     require("which-key").setup({
         icons = {
-            group = "",
+            group = " ",
+            separator = "",
         },
     })
     require("which-key").register({
         b = {
             name = "﩯Buffer",
+        },
+        c = {
+            name = "󰦨 Comment",
         },
         t = {
             name = "  Tab",
