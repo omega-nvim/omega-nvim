@@ -1,6 +1,6 @@
 local heirline = {
     "rebelot/heirline.nvim",
-    lazy = false,
+    event = "VeryLazy",
 }
 
 function heirline.config()

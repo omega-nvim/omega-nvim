@@ -1,4 +1,5 @@
 local components = {}
+-- TODO: other themes
 -- TODO: option to use dev icons
 -- TODO: help file statusline
 -- TODO: toggleterm statusline
