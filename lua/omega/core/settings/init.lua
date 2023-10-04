@@ -43,7 +43,9 @@ vim.defer_fn(function()
         trail = "•",
     }
     opt.foldmethod = "expr" -- use treesitter for folding
-    opt.foldexpr = "nvim_treesitter#foldexpr()"
+    opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+    vim.wo.foldtext = "v:lua.vim.treesitter.foldtext()"
+    -- vim.bo.indentexpr = "v.lua:require'nvim-treesitter'.indentexpr()"
 
     opt.grepprg = "rg --vimgrep --no-heading --smart-case"
     opt.grepformat:append("%f:%l:%c:%m")
