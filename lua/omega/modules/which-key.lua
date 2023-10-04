@@ -1,6 +1,7 @@
 local which_key = {
     "folke/which-key.nvim",
-    event = "VeryLazy",
+    keys = { " " },
+    -- event = "VeryLazy",
 }
 
 function which_key.config()

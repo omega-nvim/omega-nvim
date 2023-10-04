@@ -3,7 +3,7 @@ return {
     { "rcarriga/nvim-notify" },
     { "MunifTanjim/nui.nvim" },
     { "nvim-lua/plenary.nvim" },
-    { "max397574/omega-themes" },
+    { "max397574/omega-themes", lazy = false },
     {
         "glepnir/nerdicons.nvim",
         cmd = "NerdIcons",

@@ -212,6 +212,20 @@ telescope.keys = {
 function telescope.config(_, opts)
     require("lazy").load({ plugins = { "telescope-fzf-native.nvim" } })
 
+    local hl_group = vim.api.nvim_create_augroup("norg-telescope-hl", { clear = true })
+    vim.api.nvim_create_autocmd("User", {
+        group = hl_group,
+        pattern = "TelescopePreviewerLoaded",
+        callback = function(args)
+            if args.data.filetype == "norg" then
+                vim.bo.filetype = "norg"
+                vim.api.nvim_del_augroup_by_id(hl_group) -- Clear up once Neorg is loaded properly
+                -- local neorg=require"neorg.core"
+                -- local concealer = neorg.modules.get_module("core.dirman")
+            end
+        end,
+    })
+
     require("telescope").setup(opts)
     require("telescope").load_extension("fzf")
     require("telescope").load_extension("file_browser")

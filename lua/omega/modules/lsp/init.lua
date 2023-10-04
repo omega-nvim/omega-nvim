@@ -16,7 +16,6 @@ function lsp.config()
     require("omega.modules.langs.rust")
 
     vim.api.nvim_set_hl(0, "DiagnosticHeader", { link = "Special" })
-    local utils = require("omega.utils")
 
     local signs = {
         Error = "",
@@ -34,7 +33,8 @@ function lsp.config()
     vim.diagnostic.config({
         float = {
             focusable = false,
-            border = utils.border(),
+            -- border = "rounded",
+            border = require"omega.utils".border(),
             scope = "line",
             header = { "Cursor Diagnostics:", "DiagnosticHeader" },
             suffix = "",

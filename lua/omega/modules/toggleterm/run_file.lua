@@ -1,25 +1,3 @@
-local toggleterm = {
-    "akinsho/toggleterm.nvim",
-    opts = {
-        hide_numbers = true,
-        start_in_insert = true,
-        insert_mappings = true,
-        shade_terminals = true,
-        shading_factor = "3",
-        persist_size = true,
-        close_on_exit = false,
-        direction = "float",
-        float_opts = {
-            border = require("omega.utils").border(),
-            winblend = 0,
-            highlights = {
-                border = "FloatBorder",
-                background = "NormalFloat",
-            },
-        },
-    },
-}
-
 local exp = vim.fn.expand
 
 local files = {
@@ -35,7 +13,7 @@ local files = {
     typescript = "tsc " .. exp("%:t") .. " && node " .. exp("%:t:r") .. ".js",
 }
 
-local function run_file()
+return function()
     vim.cmd.w()
     local command = files[vim.bo.filetype]
     if vim.bo.filetype == "rust" then
@@ -72,34 +50,3 @@ local function run_file()
         print("Running: " .. command)
     end
 end
-local function toggle_lazygit()
-    require("toggleterm.terminal").Terminal:new({ cmd = "lazygit", close_on_exit = true }):toggle()
-end
-
-toggleterm.init = function()
-    vim.defer_fn(function()
-        vim.keymap.set("n", "<leader>r", function()
-            run_file()
-        end, { desc = " Run File" })
-        vim.keymap.set("n", "<c-t>", function()
-            require("toggleterm.terminal").Terminal:new({ close_on_exit = true }):toggle()
-        end, {
-            noremap = true,
-            silent = true,
-        })
-        vim.keymap.set("n", "<c-g>", function()
-            toggle_lazygit()
-        end, {
-            noremap = true,
-            silent = true,
-        })
-        vim.keymap.set("t", "<c-g>", "<cmd>ToggleTerm<CR>", { noremap = true, silent = true })
-        vim.keymap.set("t", "<c-t>", "<cmd>ToggleTerm<CR>", { noremap = true, silent = true })
-    end, 1)
-end
-
-toggleterm.config = function(_, opts)
-    require("toggleterm").setup(opts)
-end
-
-return toggleterm
