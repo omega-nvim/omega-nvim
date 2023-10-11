@@ -44,7 +44,6 @@ vim.defer_fn(function()
     }
     opt.foldmethod = "expr" -- use treesitter for folding
     opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-    vim.wo.foldtext = "v:lua.vim.treesitter.foldtext()"
     -- vim.bo.indentexpr = "v.lua:require'nvim-treesitter'.indentexpr()"
 
     opt.grepprg = "rg --vimgrep --no-heading --smart-case"

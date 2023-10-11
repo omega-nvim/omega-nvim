@@ -12,6 +12,8 @@ opt.foldlevel = 100
 opt.tabline = "%!v:lua.require('omega.modules.ui.tabline').run()"
 opt.showtabline = 1
 
+require("omega.core.settings.ui.foldtext")
+
 vim.defer_fn(function()
     -- TODO: move this into compiled code
     local base16 = require("omega.colors.themes." .. vim.g.colors_name).base16
