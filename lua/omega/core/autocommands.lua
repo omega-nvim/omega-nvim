@@ -88,8 +88,8 @@ autocmd({ "BufRead" }, {
     desc = "Go to last position in buffer",
 })
 
-local last_cursor
 -- Don't move cursor on yank
+local last_cursor
 autocmd("CursorMoved", {
     callback = function()
         last_cursor = vim.api.nvim_win_get_cursor(0)
@@ -97,8 +97,10 @@ autocmd("CursorMoved", {
 })
 
 autocmd("TextYankPost", {
-    callback = function()
-        vim.api.nvim_win_set_cursor(0, last_cursor)
+    callback = function(data)
+        if data.operator == "y" then
+            vim.api.nvim_win_set_cursor(0, last_cursor)
+        end
     end,
 })
 
