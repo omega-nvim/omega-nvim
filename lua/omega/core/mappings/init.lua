@@ -63,9 +63,12 @@ map("n", "<leader>ii", "i <esc>l", { desc = " Insert space before", noremap =
 map("n", "<leader>ia", "a <esc>h", { desc = " Insert space after", noremap = true })
 
 map("n", "<leader>p", '"0p', { desc = " Paste Last Yank", noremap = true })
-
 map("n", "0", function()
-    if vim.fn.match(vim.fn.getline(vim.fn.line(".")), [[\S]]) == (vim.fn.col(".") - 1) then
+    local line = vim.fn.getline(vim.fn.line(".") --[[@as string]]) --[[@as string]]
+    if line:gsub("%s*","") == "" then
+        return "0"
+    end
+    if vim.fn.match(line, [[\S]]) == (vim.fn.col(".") - 1) then
         return "0"
     else
         return "^"
