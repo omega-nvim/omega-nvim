@@ -65,7 +65,7 @@ local neorg_mod = {
     },
     dependencies = {
         { "nvim-neorg/neorg-telescope" },
-        { "max397574/neorg-context" },
+        { "max397574/neorg-contexts" },
     },
 }
 
