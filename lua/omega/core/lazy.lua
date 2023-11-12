@@ -31,10 +31,6 @@ local settings = vim.tbl_deep_extend("force", {
     change_detection = {
         notify = false,
     },
-    profiling = {
-        loader = true,
-        require = true,
-    },
     performance = {
         rtp = {
             paths = {
