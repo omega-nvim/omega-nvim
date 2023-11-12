@@ -50,6 +50,7 @@ local settings = {
 }
 
 local function setup(opts)
+    -- Taken and adapted from https://www.github.com/folke/neodev.nvim (Apache License 2.0)
     local libraries = {}
 
     local function add(lib, filter)
@@ -74,15 +75,8 @@ local function setup(opts)
                 filter[p] = true
             end
         end
-        for _, site in pairs(vim.split(vim.o.packpath, ",")) do
-            add(site .. "/pack/*/opt/*", filter)
-            add(site .. "/pack/*/start/*", filter)
-        end
-        -- add support for lazy.nvim
-        if package.loaded["lazy"] then
-            for _, plugin in ipairs(require("lazy").plugins()) do
-                add(plugin.dir, filter)
-            end
+        for _, plugin in ipairs(require("lazy").plugins()) do
+            add(plugin.dir, filter)
         end
     end
 
