@@ -1,6 +1,6 @@
 local treesitter = {
     "nvim-treesitter/nvim-treesitter",
-    branch = "main",
+    -- branch = "main",
     cmd = {
         "TSInstall",
         "TSBufEnable",
