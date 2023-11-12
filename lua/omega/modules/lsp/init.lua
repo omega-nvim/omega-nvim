@@ -1,19 +1,16 @@
 local lsp = {
     "neovim/nvim-lspconfig",
     event = "BufReadPre",
-}
-
-lsp.dependencies = {
-    {
-        "folke/neodev.nvim",
-        config = function(_, opts)
-            require("omega.modules.langs.lua").setup(opts)
-        end,
+    opts = {
+        lua = {
+            plugins = { "lazy.nvim" },
+        },
     },
 }
 
-function lsp.config()
+function lsp.config(_, opts)
     require("omega.modules.langs.rust")
+    require("omega.modules.langs.lua").setup(opts.lua)
 
     vim.api.nvim_set_hl(0, "DiagnosticHeader", { link = "Special" })
 
@@ -34,7 +31,7 @@ function lsp.config()
         float = {
             focusable = false,
             -- border = "rounded",
-            border = require"omega.utils".border(),
+            border = require("omega.utils").border(),
             scope = "line",
             header = { "Cursor Diagnostics:", "DiagnosticHeader" },
             suffix = "",
