@@ -19,14 +19,19 @@ local toggleterm = {
     },
 }
 
-local function toggle_lazygit()
-    require("toggleterm.terminal").Terminal:new({ cmd = "lazygit", close_on_exit = true }):toggle()
-end
-
 function toggleterm.config(_, opts)
     -- HACK: don't load utils on startup
     opts.float_opts.border = require("omega.utils").border()
     require("toggleterm").setup(opts)
+    local Terminal = require("toggleterm.terminal").Terminal
+    local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, close_on_exit = true })
+
+    local function toggle_lazygit()
+        lazygit:toggle()
+    end
+    vim.keymap.set("n", "<c-g>", function()
+        toggle_lazygit()
+    end)
 end
 
 toggleterm.keys = {
@@ -44,16 +49,9 @@ toggleterm.keys = {
         function()
             require("toggleterm.terminal").Terminal:new({ close_on_exit = true }):toggle()
         end,
-        desc = " Run File",
+        desc = "Open terminal",
     },
-    {
-        "<c-g>",
-        mode = { "n" },
-        function()
-            toggle_lazygit()
-        end,
-        desc = " Run File",
-    },
+    "<c-g>",
     {
         "<c-g>",
         mode = { "t" },

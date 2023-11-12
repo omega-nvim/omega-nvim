@@ -39,7 +39,7 @@ return function()
                 .. "/tmp"
 
             require("toggleterm.terminal").Terminal
-                :new({ cmd = command, close_on_exit = false, direction = "float" })
+                :new({ cmd = command, close_on_exit = true, direction = "float" })
                 :toggle()
             print("Running: " .. command)
             return
