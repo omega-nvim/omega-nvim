@@ -36,6 +36,11 @@ local neorg_mod = {
                 config = {
                     default_keybinds = true,
                     neorg_leader = ",",
+                    hook = function(keybinds)
+                        keybinds.map("norg", "n", keybinds.leader .. "Tc", function()
+                            vim.cmd.Neorg({ args = { "tangle", "current-file" } })
+                        end)
+                    end,
                 },
             },
             ["core.dirman"] = {
@@ -70,8 +75,8 @@ local neorg_mod = {
 }
 
 function neorg_mod.config(_, opts)
+    require("lazy").load({ plugins = { "nvim-treesitter" } })
     require("neorg").setup(opts)
-    vim.api.nvim_exec_autocmds("BufRead", {})
     vim.defer_fn(function()
         local ok, cmp = pcall(require, "cmp")
         if ok then
