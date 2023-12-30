@@ -11,7 +11,14 @@ local treesitter = {
     },
 }
 
-treesitter.opts = {}
+treesitter.opts = {
+    highlight = { enable = true },
+}
+
+function treesitter.config(_, opts)
+    require("nvim-treesitter").setup(opts)
+    vim.cmd.TSBufEnable("highlight")
+end
 
 function treesitter.init()
     if not vim.tbl_contains({ "[packer]", "" }, vim.fn.expand("%")) then
