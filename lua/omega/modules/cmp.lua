@@ -23,23 +23,7 @@ local cmp_module = {
         local luasnip = require("luasnip")
         local cmp = require("cmp")
         local kind = require("omega.modules.lsp.kind")
-        local types = require("cmp.types")
-        local str = require("cmp.utils.str")
 
-        local function get_abbr(_, entry)
-            local word = entry:get_insert_text()
-            if entry.completion_item.insertTextFormat == types.lsp.InsertTextFormat.Snippet then
-                word = vim.lsp.util.parse_snippet(word)
-            end
-            word = str.oneline(word)
-            local max = 50
-            if string.len(word) >= max then
-                local before = string.sub(word, 1, math.floor((max - 3) / 2))
-                word = before .. "..."
-            end
-
-            return word
-        end
         local border
         if config.ui.cmp.border == "half" then
             border = {
@@ -117,8 +101,6 @@ local cmp_module = {
                     if item.abbr == "" then
                         item.dup = 1
                     end
-
-                    item.abbr = get_abbr(item, entry)
 
                     return item
                 end,
