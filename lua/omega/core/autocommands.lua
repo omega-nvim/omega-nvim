@@ -106,9 +106,9 @@ autocmd("TextYankPost", {
 
 -- Enable bulitin treesitter
 autocmd("FileType", {
-    pattern = { "lua", "vim", "help", "c" },
+    -- pattern = { "lua", "vim", "help", "c" },
     callback = function()
-        vim.treesitter.start()
+        pcall(vim.treesitter.start)
     end,
     desc = "Enable bulitin treesitter",
 })
