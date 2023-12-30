@@ -33,6 +33,7 @@ function snippets.config(_, opts)
     end
     require("omega.modules.snippets.lua")
     require("omega.modules.snippets.tex")
+    require("omega.modules.snippets.typst")
 end
 
 return snippets
