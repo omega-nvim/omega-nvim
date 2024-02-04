@@ -8,6 +8,7 @@ local flash = {
             autojump = true,
         },
         modes = {
+            char = { enabled = false },
             search = {
                 search = {
                     incremental = true,
@@ -28,10 +29,6 @@ local flash = {
 
 function flash.config(_, opts)
     require("flash").setup(opts)
-    -- vim.keymap.del("o", "f")
-    -- vim.keymap.del("o", "F")
-    -- vim.keymap.del("o", ";");
-    -- vim.keymap.del("o", ",")
 end
 
 vim.keymap.set("o", "r", function()
