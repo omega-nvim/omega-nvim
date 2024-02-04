@@ -57,8 +57,33 @@ return {
     },
     {
         "max397574/better-escape.nvim",
+        branch = "feat/rewrite_with_mappings",
         event = { "InsertEnter" },
-        config = true,
+        opts = {
+            mappings = {
+                i = {
+                    j = {
+                        k = "<Esc>",
+                        j = "<Esc>",
+                    },
+                    [" "] = {
+                        ["<TAB>"] = function()
+                            vim.defer_fn(function()
+                                vim.o.ul = vim.o.ul
+                                require("luasnip").expand_or_jump()
+                            end, 1)
+                        end,
+                        ["<S-TAB>"] = function()
+                            vim.defer_fn(function()
+                                vim.o.ul = vim.o.ul
+                                require("luasnip").jump(-1)
+                            end, 1)
+                        end,
+                        [" "] = "<left>",
+                    },
+                },
+            },
+        },
     },
     { "stevearc/oil.nvim", config = true, cmd = { "Oil" } },
 }
